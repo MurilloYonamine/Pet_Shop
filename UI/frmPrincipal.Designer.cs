@@ -41,6 +41,7 @@ namespace UI
             this.mnuDiskRacao = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHotel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTaxiDog = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.mnuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,6 +139,16 @@ namespace UI
             this.mnuTaxiDog.Text = "&Taxi &Dog";
             this.mnuTaxiDog.Click += new System.EventHandler(this.mnuTaxiDog_Click);
             // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Arial", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTitulo.Location = new System.Drawing.Point(1, 24);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(0, 75);
+            this.lblTitulo.TabIndex = 3;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,6 +156,7 @@ namespace UI
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(136)))), ((int)(((byte)(156)))));
             this.BackgroundImage = global::UI.Properties.Resources.bg_lightGrayBlue;
             this.ClientSize = new System.Drawing.Size(1413, 568);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.mnuPrincipal);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnuPrincipal;
@@ -175,5 +187,6 @@ namespace UI
         private System.Windows.Forms.ToolStripMenuItem mnuDiskRacao;
         private System.Windows.Forms.ToolStripMenuItem mnuHotel;
         private System.Windows.Forms.ToolStripMenuItem mnuTaxiDog;
+        private System.Windows.Forms.Label lblTitulo;
     }
 }

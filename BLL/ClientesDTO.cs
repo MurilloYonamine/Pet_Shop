@@ -35,8 +35,8 @@ namespace BLL
             try
             {
                 //Instrução de inserção no banco de dados
-                string sql = "INSERT INTO tb_cliente (ClNome, ClCEP, ClEmail, ClEndereco, ClNumero, ClBairro, ClCidade, ClUf, ClTelefone, ClComplemento, ClGenero) " +
-                                             "VALUES (@nome, @cep, @email, @endereco, @numero, @bairro, @cidade, @uf, @telefone, @complemento, @genero)";
+                string sql = "INSERT INTO tb_cliente (ClNome, ClCEP, ClCpf, ClEmail, ClEndereco, ClNumero, ClBairro, ClCidade, ClUf, ClTelefone, ClComplemento, ClGenero) " +
+                                             "VALUES (@nome, @cep, @cpf, @email, @endereco, @numero, @bairro, @cidade, @uf, @telefone, @complemento, @genero)";
                 //Instância que realizará a conexão e execução do Insert
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
                 //Tipo de comando: Text ou Procedure
@@ -45,6 +45,7 @@ namespace BLL
                 //Fatal ERROR - caso os parâmetros @ estejam errados
                 cmd.Parameters.Add(new MySqlParameter("@nome", dados.Nome));
                 cmd.Parameters.Add(new MySqlParameter("@cep", dados.Cep));
+                cmd.Parameters.Add(new MySqlParameter("@cpf", dados.Cpf));
                 cmd.Parameters.Add(new MySqlParameter("@email", dados.Email));
                 cmd.Parameters.Add(new MySqlParameter("@endereco", dados.Endereco));
                 cmd.Parameters.Add(new MySqlParameter("@numero", dados.Numero));

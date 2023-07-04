@@ -31,6 +31,7 @@ namespace UI
 
             // Envia o formulário frmClientes como parâmetro
             AbrirFormulario(formFilho);
+            lblTitulo.Text = "Cadastro de Clientes";
         }
         private void mnuAnimais_Click(object sender, EventArgs e)
         {
@@ -39,6 +40,7 @@ namespace UI
 
             // Envia o formulário frmClientes como parâmetro
             AbrirFormulario(formFilho);
+            lblTitulo.Text = "Cadastro de Animais";
         }
         private void mnuConexao_Click(object sender, EventArgs e)
         {
@@ -47,6 +49,7 @@ namespace UI
 
             // Envia o formulário frmClientes como parâmetro
             AbrirFormulario(formFilho);
+            lblTitulo.Text = "Teste de Conexão";
         }
         private void mnuDiskRacao_Click(object sender, EventArgs e)
         {
@@ -55,6 +58,7 @@ namespace UI
 
             // Envia o formulário frmClientes como parâmetro
             AbrirFormulario(formFilho);
+            lblTitulo.Text = "Disk Ração";
         }
 
         private void mnuHotel_Click(object sender, EventArgs e)
@@ -64,6 +68,7 @@ namespace UI
 
             // Envia o formulário frmClientes como parâmetro
             AbrirFormulario(formFilho);
+            lblTitulo.Text = "Hotel";
         }
         private void mnuTaxiDog_Click(object sender, EventArgs e)
         {
@@ -72,6 +77,7 @@ namespace UI
 
             // Envia o formulário frmClientes como parâmetro
             AbrirFormulario(formFilho);
+            lblTitulo.Text = "Taxi Dog";
         }
         public void LoginUsuario()
         {
