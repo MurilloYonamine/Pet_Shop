@@ -133,6 +133,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bg_taxidog {
+            get {
+                object obj = ResourceManager.GetObject("bg-taxidog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bg_white {
             get {
                 object obj = ResourceManager.GetObject("bg-white", resourceCulture);

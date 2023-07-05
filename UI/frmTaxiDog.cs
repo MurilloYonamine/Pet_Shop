@@ -47,7 +47,8 @@ namespace UI
                 cboHorario.Text = dgvAgendamentos.Rows[e.RowIndex].Cells[6].Value.ToString();*/
 
                 btnEditar.Visible = true; //Ou enable
-                btnAgendar.Enabled = true;
+                btnAgendar.Enabled = false;
+                
             }
         }
         public void ConfigurarDataGridTaxi()
@@ -133,48 +134,47 @@ namespace UI
             TaxiDogDTO taxiDog = new TaxiDogDTO();
             SalvarAgendamento salvarAgendamento = new SalvarAgendamento();
 
-
-            taxiDog.Cliente = txtNomeCliente.Text;
-            taxiDog.Cpf = mskCpf.Text;
-            taxiDog.Telefone = mskTelefone.Text;
-            taxiDog.CodigoCliente = Convert.ToInt32(txtCodCliente.Text);
-            taxiDog.NomeAnimal = txtTipoAnimal.Text;
-            taxiDog.Rga = mskRga.Text;
-            //hotel.animal = cboAnimal.Text;
-            taxiDog.DtAgendamento = dtpAgendamento.Value;
-            taxiDog.CodigoAnimal = Convert.ToInt32(txtCodAnimal.Text);
-            taxiDog.Horario = cboHorario.Text;
-
-            if (chkPetCare.Checked)
+            if (txtNomeCliente.Text == "" || mskCpf.Text == "" || txtCodCliente.Text == "" || txtTipoAnimal.Text == "" || mskRga.Text == "" || txtCodAnimal.Text == "" ||
+                cboHorario.Text == "")
             {
-                taxiDog.Petcare = "Sim";
-                salvarAgendamento.InserirAgendamento(taxiDog);
+                MessageBox.Show("Todos os campos devem ser preenchidos", "Aviso");
             }
             else
             {
-                taxiDog.Petcare = "Não";
-                salvarAgendamento.InserirAgendamento(taxiDog);
+                taxiDog.Cliente = txtNomeCliente.Text;
+                taxiDog.Cpf = mskCpf.Text;
+                taxiDog.Telefone = mskTelefone.Text;
+                taxiDog.CodigoCliente = Convert.ToInt32(txtCodCliente.Text);
+                taxiDog.NomeAnimal = txtTipoAnimal.Text;
+                taxiDog.Rga = mskRga.Text;
+                //hotel.animal = cboAnimal.Text;
+                taxiDog.DtAgendamento = dtpAgendamento.Value;
+                taxiDog.CodigoAnimal = Convert.ToInt32(txtCodAnimal.Text);
+                taxiDog.Horario = cboHorario.Text;
+                if (chkPetCare.Checked)
+                {
+                    taxiDog.Petcare = "Sim";
+                    salvarAgendamento.InserirAgendamento(taxiDog);
+                }
+                else
+                {
+                    taxiDog.Petcare = "Não";
+                    salvarAgendamento.InserirAgendamento(taxiDog);
+                }
+
+                if (chkPetVet.Checked)
+                {
+                    taxiDog.Petvet = "Sim";
+                    salvarAgendamento.InserirAgendamento(taxiDog);
+                }
+                else
+                {
+                    taxiDog.Petvet = "Não";
+                    salvarAgendamento.InserirAgendamento(taxiDog);
+                }
+                MessageBox.Show(taxiDog.Mensagem, "Aviso", MessageBoxButtons.OK);
+                CarregarGridTaxi();
             }
-
-            if (chkPetVet.Checked)
-            {
-                taxiDog.Petvet = "Sim";
-                salvarAgendamento.InserirAgendamento(taxiDog);
-            }
-            else
-            {
-                taxiDog.Petvet = "Não";
-                salvarAgendamento.InserirAgendamento(taxiDog);
-            }
-
-
-
-
-            /*CarregarGridHotel();
-            Limpar();*/
-
-            MessageBox.Show(taxiDog.Mensagem, "Aviso", MessageBoxButtons.OK);
-            CarregarGridTaxi();
         }
         private void btnCadastrarCliente_Click(object sender, EventArgs e)
         {
@@ -274,6 +274,7 @@ namespace UI
             ConfigurarDataGridTaxi();
             MessageBox.Show(taxiDog.Mensagem, "Aviso",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
         }
         // ------------------------------------------------------------------------------- //
         // Métodos
@@ -283,12 +284,18 @@ namespace UI
             txtNomeCliente.Clear();
             mskCpf.Clear();
             mskTelefone.Clear();
-            cboAnimal.Items.Clear();
+            cboAnimal.Text = "";
             mskRga.Clear();
             txtTipoAnimal.Clear();
             txtCodAnimal.Clear();
             cboAnimal.Items.Clear();
             cboHorario.Items.Clear();
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            Limpar();
+            btnAgendar.Enabled = true;
         }
     }
 }

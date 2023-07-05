@@ -387,6 +387,7 @@ namespace UI
             this.dgvListaAnimais.Size = new System.Drawing.Size(483, 347);
             this.dgvListaAnimais.TabIndex = 33;
             this.dgvListaAnimais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaAnimais_CellClick);
+            this.dgvListaAnimais.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaAnimais_CellContentClick);
             // 
             // lblPesquisaPet
             // 

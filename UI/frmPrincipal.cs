@@ -135,7 +135,7 @@ namespace UI
                 AcessoLogin acessoLogin = new AcessoLogin();
                 AtualizarLogon atualizaLogon = new AtualizarLogon();
                 //Armazena o usuário que realizou o login
-                login.Usuario = acessoLogin.VerificarLogado(login);
+                //login.Usuario = acessoLogin.VerificarLogado(login);
                 //Altera o status do usuário para 0 na tabela tb_usuario
                 login.Logado = 0;
                 atualizaLogon.AtualizarLogado(login);
@@ -159,7 +159,7 @@ namespace UI
         // Ao fechar o formulário de login, executa esse procedimento
         private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //Instância das Classes
+           //Instância das Classes
             LoginDTO login = new LoginDTO();
             AcessoLogin acessoLogin = new AcessoLogin();
             AtualizarLogon atualizaLogon = new AtualizarLogon();
@@ -168,11 +168,6 @@ namespace UI
             //Altera o status do usuário para 0 na tabela tb_usuario
             login.Logado = 0;
             atualizaLogon.AtualizarLogado(login);
-            //Encerra a aplicação.
-            Close();
-
         }
-
-
     }
 }

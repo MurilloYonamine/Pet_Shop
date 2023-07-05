@@ -38,7 +38,9 @@ namespace BLL
             try
             {
                 //String com o comando Insert do Banco
-                string sql = "INSERT INTO tb_animais (AnNomePet,AnClCodigo, AnFnNome) VALUES (@nomePet, @codigoDono, @nomeFuncionario)";
+                string sql = "INSERT INTO tb_animal " +
+                    "(AnNomePet, AnClCodigo, AnFnNome, AnRaca, AnCor, AnTipo, AnPeso, AnNascimento, AnPedigree, AnRga, AnSexo, AnObservacao) " +
+                    "VALUES (@nomePet, @codigoDono, @nomeFuncionario, @raca, @cor, @tipo, @peso, @nascimento, @pedigree, @rga, @sexo, @observacao)";
                 //Variável que receberá o resultado da Conexão com o comando Insert
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
                 //Tipo de comando: Text ou Procedure
@@ -47,6 +49,15 @@ namespace BLL
                 cmd.Parameters.Add(new MySqlParameter("@nomePet", dados.NomePet));
                 cmd.Parameters.Add(new MySqlParameter("@codigoDono", dados.CodigoDono));
                 cmd.Parameters.Add(new MySqlParameter("@nomeFuncionario", dados.Funcionario));
+                cmd.Parameters.Add(new MySqlParameter("@raca", dados.Raca));
+                cmd.Parameters.Add(new MySqlParameter("@cor", dados.Cor));
+                cmd.Parameters.Add(new MySqlParameter("@tipo", dados.Tipo));
+                cmd.Parameters.Add(new MySqlParameter("@peso", dados.Peso));
+                cmd.Parameters.Add(new MySqlParameter("@nascimento", dados.Nascimento));
+                cmd.Parameters.Add(new MySqlParameter("@pedigree", dados.Pedigree));
+                cmd.Parameters.Add(new MySqlParameter("@rga", dados.Rga));
+                cmd.Parameters.Add(new MySqlParameter("@sexo", dados.Sexo));
+                cmd.Parameters.Add(new MySqlParameter("@observacao", dados.Observacao));
                 //Realiza a contagem de registros inseridos.
                 int registrosInseridos = cmd.ExecuteNonQuery();
                 // Verificar se algum registro foi inserido no Banco de Dados.

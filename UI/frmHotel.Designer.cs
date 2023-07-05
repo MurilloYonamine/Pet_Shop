@@ -57,6 +57,8 @@ namespace UI
             this.btnCadastrarCliente = new System.Windows.Forms.Button();
             this.btnHospedar = new System.Windows.Forms.Button();
             this.picBottom = new System.Windows.Forms.PictureBox();
+            this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            this.btnLimpar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarHospedagens)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBottom)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +67,7 @@ namespace UI
             // 
             this.txtCodHotel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodHotel.Location = new System.Drawing.Point(525, 45);
-            this.txtCodHotel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodHotel.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodHotel.Name = "txtCodHotel";
             this.txtCodHotel.ReadOnly = true;
             this.txtCodHotel.Size = new System.Drawing.Size(126, 26);
@@ -86,7 +88,7 @@ namespace UI
             // 
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.Location = new System.Drawing.Point(1298, 51);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(94, 42);
             this.btnEditar.TabIndex = 55;
@@ -98,18 +100,19 @@ namespace UI
             // 
             this.dgvListarHospedagens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListarHospedagens.Location = new System.Drawing.Point(712, 105);
-            this.dgvListarHospedagens.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvListarHospedagens.Margin = new System.Windows.Forms.Padding(4);
             this.dgvListarHospedagens.Name = "dgvListarHospedagens";
             this.dgvListarHospedagens.ReadOnly = true;
             this.dgvListarHospedagens.Size = new System.Drawing.Size(680, 208);
             this.dgvListarHospedagens.TabIndex = 54;
             this.dgvListarHospedagens.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarHospedagens_CellClick);
+            this.dgvListarHospedagens.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarHospedagens_CellContentClick);
             // 
             // txtCodigoAnimal
             // 
             this.txtCodigoAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoAnimal.Location = new System.Drawing.Point(568, 211);
-            this.txtCodigoAnimal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigoAnimal.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigoAnimal.Name = "txtCodigoAnimal";
             this.txtCodigoAnimal.ReadOnly = true;
             this.txtCodigoAnimal.Size = new System.Drawing.Size(83, 26);
@@ -131,7 +134,7 @@ namespace UI
             this.cboAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboAnimal.FormattingEnabled = true;
             this.cboAnimal.Location = new System.Drawing.Point(141, 208);
-            this.cboAnimal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboAnimal.Margin = new System.Windows.Forms.Padding(4);
             this.cboAnimal.Name = "cboAnimal";
             this.cboAnimal.Size = new System.Drawing.Size(296, 28);
             this.cboAnimal.TabIndex = 51;
@@ -141,7 +144,7 @@ namespace UI
             // 
             this.mskCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskCpf.Location = new System.Drawing.Point(442, 89);
-            this.mskCpf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mskCpf.Margin = new System.Windows.Forms.Padding(4);
             this.mskCpf.Mask = "000,000,000-00";
             this.mskCpf.Name = "mskCpf";
             this.mskCpf.ReadOnly = true;
@@ -164,7 +167,7 @@ namespace UI
             this.dtpRetorno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpRetorno.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpRetorno.Location = new System.Drawing.Point(494, 339);
-            this.dtpRetorno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpRetorno.Margin = new System.Windows.Forms.Padding(4);
             this.dtpRetorno.Name = "dtpRetorno";
             this.dtpRetorno.Size = new System.Drawing.Size(157, 26);
             this.dtpRetorno.TabIndex = 48;
@@ -185,7 +188,7 @@ namespace UI
             this.dtpEntrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpEntrada.Location = new System.Drawing.Point(176, 339);
-            this.dtpEntrada.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpEntrada.Margin = new System.Windows.Forms.Padding(4);
             this.dtpEntrada.Name = "dtpEntrada";
             this.dtpEntrada.Size = new System.Drawing.Size(157, 26);
             this.dtpEntrada.TabIndex = 45;
@@ -194,7 +197,7 @@ namespace UI
             // 
             this.mskRga.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskRga.Location = new System.Drawing.Point(423, 257);
-            this.mskRga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mskRga.Margin = new System.Windows.Forms.Padding(4);
             this.mskRga.Mask = "0,000,000";
             this.mskRga.Name = "mskRga";
             this.mskRga.ReadOnly = true;
@@ -205,7 +208,7 @@ namespace UI
             // 
             this.mskTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskTelefone.Location = new System.Drawing.Point(141, 133);
-            this.mskTelefone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mskTelefone.Margin = new System.Windows.Forms.Padding(4);
             this.mskTelefone.Mask = "(00) 00000-0000";
             this.mskTelefone.Name = "mskTelefone";
             this.mskTelefone.ReadOnly = true;
@@ -238,7 +241,7 @@ namespace UI
             // 
             this.txtTipoAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTipoAnimal.Location = new System.Drawing.Point(141, 254);
-            this.txtTipoAnimal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTipoAnimal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTipoAnimal.Name = "txtTipoAnimal";
             this.txtTipoAnimal.ReadOnly = true;
             this.txtTipoAnimal.Size = new System.Drawing.Size(217, 26);
@@ -292,7 +295,7 @@ namespace UI
             // 
             this.txtNomeCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeCliente.Location = new System.Drawing.Point(141, 89);
-            this.txtNomeCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNomeCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.ReadOnly = true;
             this.txtNomeCliente.Size = new System.Drawing.Size(217, 26);
@@ -302,7 +305,7 @@ namespace UI
             // 
             this.txtCodCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodCliente.Location = new System.Drawing.Point(176, 48);
-            this.txtCodCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodCliente.Name = "txtCodCliente";
             this.txtCodCliente.Size = new System.Drawing.Size(182, 26);
             this.txtCodCliente.TabIndex = 34;
@@ -322,10 +325,10 @@ namespace UI
             // btnCadastrarAnimal
             // 
             this.btnCadastrarAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarAnimal.Location = new System.Drawing.Point(959, 329);
-            this.btnCadastrarAnimal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCadastrarAnimal.Location = new System.Drawing.Point(1074, 339);
+            this.btnCadastrarAnimal.Margin = new System.Windows.Forms.Padding(4);
             this.btnCadastrarAnimal.Name = "btnCadastrarAnimal";
-            this.btnCadastrarAnimal.Size = new System.Drawing.Size(182, 91);
+            this.btnCadastrarAnimal.Size = new System.Drawing.Size(139, 92);
             this.btnCadastrarAnimal.TabIndex = 60;
             this.btnCadastrarAnimal.Text = "CADASTRAR ANIMAL";
             this.btnCadastrarAnimal.UseVisualStyleBackColor = true;
@@ -334,10 +337,10 @@ namespace UI
             // btnCadastrarCliente
             // 
             this.btnCadastrarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarCliente.Location = new System.Drawing.Point(1210, 329);
-            this.btnCadastrarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCadastrarCliente.Location = new System.Drawing.Point(1263, 339);
+            this.btnCadastrarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.btnCadastrarCliente.Name = "btnCadastrarCliente";
-            this.btnCadastrarCliente.Size = new System.Drawing.Size(182, 91);
+            this.btnCadastrarCliente.Size = new System.Drawing.Size(129, 92);
             this.btnCadastrarCliente.TabIndex = 59;
             this.btnCadastrarCliente.Text = "CADASTRAR CLIENTE";
             this.btnCadastrarCliente.UseVisualStyleBackColor = true;
@@ -346,10 +349,10 @@ namespace UI
             // btnHospedar
             // 
             this.btnHospedar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHospedar.Location = new System.Drawing.Point(712, 329);
-            this.btnHospedar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHospedar.Location = new System.Drawing.Point(887, 339);
+            this.btnHospedar.Margin = new System.Windows.Forms.Padding(4);
             this.btnHospedar.Name = "btnHospedar";
-            this.btnHospedar.Size = new System.Drawing.Size(172, 91);
+            this.btnHospedar.Size = new System.Drawing.Size(133, 92);
             this.btnHospedar.TabIndex = 58;
             this.btnHospedar.Text = "HOSPEDAR";
             this.btnHospedar.UseVisualStyleBackColor = true;
@@ -364,12 +367,31 @@ namespace UI
             this.picBottom.TabIndex = 61;
             this.picBottom.TabStop = false;
             // 
+            // mySqlDataAdapter1
+            // 
+            this.mySqlDataAdapter1.DeleteCommand = null;
+            this.mySqlDataAdapter1.InsertCommand = null;
+            this.mySqlDataAdapter1.SelectCommand = null;
+            this.mySqlDataAdapter1.UpdateCommand = null;
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.BackColor = System.Drawing.Color.White;
+            this.btnLimpar.Image = global::UI.Properties.Resources.eraser_fill;
+            this.btnLimpar.Location = new System.Drawing.Point(732, 339);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(121, 92);
+            this.btnLimpar.TabIndex = 62;
+            this.btnLimpar.UseVisualStyleBackColor = false;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // frmHotel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(212)))), ((int)(((byte)(209)))));
             this.ClientSize = new System.Drawing.Size(1415, 502);
+            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnCadastrarAnimal);
             this.Controls.Add(this.btnCadastrarCliente);
             this.Controls.Add(this.btnHospedar);
@@ -400,7 +422,7 @@ namespace UI
             this.Controls.Add(this.picBottom);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(89)))), ((int)(((byte)(113)))));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmHotel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hotel";
@@ -442,5 +464,7 @@ namespace UI
         private System.Windows.Forms.Button btnCadastrarCliente;
         private System.Windows.Forms.Button btnHospedar;
         private System.Windows.Forms.PictureBox picBottom;
+        private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter1;
+        private System.Windows.Forms.Button btnLimpar;
     }
 }

@@ -69,6 +69,7 @@ namespace UI
             racao.Entrada = Convert.ToDateTime(dtpEntrada.Value);
             racao.Saida = Convert.ToDateTime(dtpSaida.Value);
             racao.Codigo = Convert.ToInt32(txtCodigo.Text);
+            racao.CodigoRacao = Convert.ToInt32(txtCodigoRacao.Text);
             inserirRacao.InserirDados(racao);
             CarregarGrid();
             ConfigurarDataGridView();
@@ -90,7 +91,7 @@ namespace UI
             {
                 RacaoDTO racao = new RacaoDTO();
                 //TextBox = DataGridView.LinhaSelecionada.Célula[Posição].Valor.ParaTexto
-                racao.CodigoRacao = Convert.ToInt32(dgvEstoque.Rows[e.RowIndex].Cells[0].Value);
+                txtCodigoRacao.Text = dgvEstoque.Rows[e.RowIndex].Cells[0].Value.ToString();
                 txtRacao.Text = dgvEstoque.Rows[e.RowIndex].Cells[1].Value.ToString();
                 numQuantidade.Maximum = Convert.ToInt32(dgvEstoque.Rows[e.RowIndex].Cells[2].Value);
             }

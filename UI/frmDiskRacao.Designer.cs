@@ -45,6 +45,8 @@ namespace UI
             this.cboFuncionario = new System.Windows.Forms.ComboBox();
             this.numQuantidade = new System.Windows.Forms.NumericUpDown();
             this.txtRacao = new System.Windows.Forms.TextBox();
+            this.lblCodigoRacao = new System.Windows.Forms.Label();
+            this.txtCodigoRacao = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBgDog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidade)).BeginInit();
@@ -84,7 +86,7 @@ namespace UI
             this.dtpEntrada.Name = "dtpEntrada";
             this.dtpEntrada.Size = new System.Drawing.Size(140, 26);
             this.dtpEntrada.TabIndex = 4;
-            this.dtpEntrada.Value = new System.DateTime(2023, 6, 27, 0, 0, 0, 0);
+            this.dtpEntrada.Value = new System.DateTime(2023, 7, 5, 0, 0, 0, 0);
             // 
             // lblEntrada
             // 
@@ -139,7 +141,7 @@ namespace UI
             this.dtpSaida.Name = "dtpSaida";
             this.dtpSaida.Size = new System.Drawing.Size(151, 26);
             this.dtpSaida.TabIndex = 13;
-            this.dtpSaida.Value = new System.DateTime(2023, 6, 27, 0, 0, 0, 0);
+            this.dtpSaida.Value = new System.DateTime(2023, 7, 5, 0, 0, 0, 0);
             // 
             // btnLimpar
             // 
@@ -192,12 +194,31 @@ namespace UI
             this.txtRacao.Size = new System.Drawing.Size(140, 26);
             this.txtRacao.TabIndex = 22;
             // 
+            // lblCodigoRacao
+            // 
+            this.lblCodigoRacao.AutoSize = true;
+            this.lblCodigoRacao.Location = new System.Drawing.Point(583, 36);
+            this.lblCodigoRacao.Name = "lblCodigoRacao";
+            this.lblCodigoRacao.Size = new System.Drawing.Size(136, 18);
+            this.lblCodigoRacao.TabIndex = 24;
+            this.lblCodigoRacao.Text = "Código da Ração:";
+            // 
+            // txtCodigoRacao
+            // 
+            this.txtCodigoRacao.Location = new System.Drawing.Point(725, 33);
+            this.txtCodigoRacao.Name = "txtCodigoRacao";
+            this.txtCodigoRacao.ReadOnly = true;
+            this.txtCodigoRacao.Size = new System.Drawing.Size(59, 26);
+            this.txtCodigoRacao.TabIndex = 23;
+            // 
             // frmDiskRacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(212)))), ((int)(((byte)(209)))));
             this.ClientSize = new System.Drawing.Size(1189, 357);
+            this.Controls.Add(this.lblCodigoRacao);
+            this.Controls.Add(this.txtCodigoRacao);
             this.Controls.Add(this.txtRacao);
             this.Controls.Add(this.numQuantidade);
             this.Controls.Add(this.cboFuncionario);
@@ -247,5 +268,7 @@ namespace UI
         private System.Windows.Forms.ComboBox cboFuncionario;
         private System.Windows.Forms.NumericUpDown numQuantidade;
         private System.Windows.Forms.TextBox txtRacao;
+        private System.Windows.Forms.Label lblCodigoRacao;
+        private System.Windows.Forms.TextBox txtCodigoRacao;
     }
 }

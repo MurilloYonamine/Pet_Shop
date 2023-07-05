@@ -34,8 +34,8 @@ namespace BLL
             {
                 //Instrução de inserção no banco de dados
                 string sql = "INSERT INTO tb_hotel " +
-                    "(HoCodigo, HoAnCodigo, HoEntrada, HoRetorno)" +
-                "VALUES (@codcliente, @codanimal, @entrada, @retorno)";
+                    "(HoClCodigo, HoAnCodigo, HoEntrada, HoRetorno)" +
+                "VALUES (@codcliente, @codanimal, @dtentrada, @dtretorno)";
 
                 //Instância que realizará a conexão e execução do Insert
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
@@ -230,8 +230,8 @@ namespace BLL
                 string sql = "UPDATE tb_hotel SET " +
                     "HoClCodigo=@codigocliente, " +
                     "HoAnCodigo=@codigoanimal, " +
-                    "HoEntrada=@entrada, " +
-                    "HoRetorno=@retorno WHERE HoCodigo=@codigo";
+                    "HoEntrada=@dataentrada, " +
+                    "HoRetorno=@dataretorno WHERE HoCodigo=@codigo";
                 //Uso da abertura de Conexão e da string sql
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
                 //Tipo de comando: Text ou Stored Procedure

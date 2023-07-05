@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Jul-2023 às 22:05
+-- Tempo de geração: 05-Jul-2023 às 22:11
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -76,7 +76,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_InserirSubtrair` (IN `pEsCodigo`
         (DrEsCodigo, DrFnCodigo, DrQuantidade, DrEntrada, DrSaida)
         VALUE(pEsCodigo, pFnCodigo, pDrQuantidade, pDrEntrada, pDrSaida);
 
-	UPDATE tb_estoque SET EsQuantidade = EsQuantidade - tb_diskracao.DrQuantidade
+	UPDATE tb_estoque SET EsQuantidade = EsQuantidade - pDrQuantidade
         WHERE EsCodigoRacao = pCodigoRacao;
 
 -- Fim da execução do comando
@@ -135,11 +135,10 @@ CREATE TABLE `tb_animal` (
 INSERT INTO `tb_animal` (`AnCodigoPet`, `AnNomePet`, `AnClCodigo`, `AnFnNome`, `AnRaca`, `AnCor`, `AnTipo`, `AnPeso`, `AnNascimento`, `AnPedigree`, `AnRga`, `AnSexo`, `AnObservacao`) VALUES
 (1, 'Bolinha', 1, 1, 'SRD', 'Marrom', 'Cachorro', '10.50', '2018-05-15', 'Não', '1234567', 'Macho', 'Animal dócil'),
 (2, 'Mia', 2, 2, 'Persa', 'Cinza', 'Gato', '4.20', '2019-09-20', 'Sim', '9876543', 'Fêmea', 'Precisa de cuidados especiais'),
-(3, 'Thor', 1, 1, 'Bulldog Francês', 'Fulvo', 'Cachorro', '12.70', '2017-07-10', 'Sim', '4567891', 'Macho', 'Adora brincar de buscar a bola'),
 (4, 'Mel', 4, 3, 'Poodle', 'Branco', 'Cachorro', '7.80', '2020-02-05', 'Não', '7894561', 'Fêmea', 'Excelente companheira'),
 (5, 'Nina', 1, 1, 'Siamese', 'Marrom e Branco', 'Gato', '3.50', '2021-01-12', 'Sim', '2587413', 'Fêmea', 'Muito brincalhona'),
 (6, 'Simba', 6, 4, 'Maine Coon', 'Laranja', 'Gato', '8.90', '2017-11-30', 'Não', '9638527', 'Macho', 'Grande e tranquilo'),
-(7, 'Branquinho', 7, 5, 'SRD', 'Branco', 'Coelho', '1.20', '2022-03-08', 'Não', '1478523', 'Macho', 'Adora cenoura'),
+(7, 'Branquinho', 7, 5, 'SRD', 'Branco', 'Coelho', '1.20', '2022-03-26', 'Não', '1478523', 'Macho', 'Adora cenoura e beterraba'),
 (8, 'Luna', 2, 3, 'Golden Retriever', 'Dourado', 'Cachorro', '25.30', '2016-09-03', 'Sim', '3698521', 'Fêmea', 'Ótima para crianças'),
 (9, 'Max', 1, 1, 'Labrador', 'Preto', 'Cachorro', '15.20', '2019-05-10', 'Sim', '1234567', 'Macho', 'Adora brincar no parque'),
 (10, 'Molly', 1, 2, 'Golden Retriever', 'Dourado', 'Cachorro', '12.80', '2018-12-02', 'Sim', '2345678', 'Fêmea', 'Gosta de nadar'),
@@ -150,7 +149,8 @@ INSERT INTO `tb_animal` (`AnCodigoPet`, `AnNomePet`, `AnClCodigo`, `AnFnNome`, `
 (15, 'Nina', 1, 2, 'Persa', 'Cinza', 'Gato', '4.10', '2021-01-07', 'Não', '7890123', 'Fêmea', 'Gosta de brincar com bolinhas'),
 (16, 'Simba', 1, 3, 'Maine Coon', 'Marrom Escuro', 'Gato', '6.60', '2020-09-14', 'Não', '8901234', 'Macho', 'Gosta de se exibir'),
 (17, 'Lola', 8, 4, 'Poodle', 'Branco', 'Cachorro', '7.30', '2019-11-30', 'Sim', '9012345', 'Fêmea', 'Adora passear de carro'),
-(18, 'Toby', 4, 5, 'Shih Tzu', 'Marrom e Branco', 'Cachorro', '6.20', '2020-07-22', 'Sim', '1234567', 'Macho', 'Gosta de brincar com bolinhas de tênis');
+(18, 'Toby', 4, 5, 'Shih Tzu', 'Marrom e Branco', 'Cachorro', '6.20', '2020-07-22', 'Sim', '1234567', 'Macho', 'Gosta de brincar com bolinhas de tênis'),
+(24, 'Csharp', 1, 3, 'Pug', 'Cinza', 'Cachorro', '10.00', '2020-01-28', 'Não', '9.999.9', 'Macho', 'Alergia a ração Pedigree');
 
 -- --------------------------------------------------------
 
@@ -184,13 +184,13 @@ INSERT INTO `tb_cliente` (`ClCodigo`, `ClNome`, `ClCpf`, `ClCep`, `ClEmail`, `Cl
 (2, 'João Santos', '98765432109', '98765-432', 'joao.santos@email.com', 'Avenida dos Sonhos', 456, 'Vila Nova', 'Rio de Janeiro', 'RJ', '(21) 12345-6789', 'Casa 2B', 'Masculino', NULL),
 (3, 'Maria Oliveira', '45678912305', '54321-876', 'maria.oliveira@email.com', 'Rua das Palmeiras', 789, 'Jardim Primavera', 'Belo Horizonte', 'MG', '(31) 55555-5555', 'Sala 3C', 'Feminino', NULL),
 (4, 'Pedro Almeida', '78945612308', '87654-321', 'pedro.almeida@email.com', 'Avenida das Acácias', 147, 'Jardim Botânico', 'Curitiba', 'PR', '(41) 33333-2222', 'Casa 4D', 'Masculino', NULL),
-(5, 'Sandra Lima', '65498732102', '23456-789', 'sandra.lima@email.com', 'Rua das Orquídeas', 369, 'Vila Bela', 'Campinas', 'SP', '(19) 22222-1111', 'Apartamento 5E', 'Feminino', NULL),
 (6, 'Carlos Costa', '74185296304', '98765-432', 'carlos.costa@email.com', 'Rua dos Girassóis', 258, 'Jardim das Rosas', 'Porto Alegre', 'RS', '(51) 66666-6666', 'Sala 6F', 'Masculino', NULL),
 (7, 'Lúcia Fernandes', '96385274103', '54321-876', 'lucia.fernandes@email.com', 'Avenida das Margaridas', 753, 'Jardim Florido', 'Salvador', 'BA', '(71) 77777-7777', 'Casa 7G', 'Feminino', NULL),
 (8, 'André Castro', '85296374106', '12345-678', 'andre.castro@email.com', 'Rua das Violetas', 369, 'Vila das Flores', 'Manaus', 'AM', '(92) 88888-8888', 'Apartamento 8H', 'Gênero Neutro', NULL),
 (9, 'Júlia Santos', '36985274100', '87654-321', 'julia.santos@email.com', 'Avenida Brasil', 456, 'Centro', 'Goiânia', 'GO', '(62) 99999-9999', 'Casa 9I', 'Trangênero', NULL),
-(10, 'Miguel Fernandes', '45612378902', '54321987', 'miguel.fernandes@email.com', 'Rua das Azaleias', 986, 'Vila dos Pássaros', 'Fortaleza', 'CE', '85444444444', 'Apartamento 10J', 'Não-binário', NULL),
-(11, 'Cléberson Ramos', '12345678912', '02358110', 'Cleberson@gmail.com', 'Rua Pedro Vaz Rego', 176, 'Jardim Daysy', 'São Paulo', 'SP', '11943753228', 'Viela 1', 'Masculino', '2023-06-30 14:26:27');
+(11, 'Cléberson Ramos', '12345678912', '02358110', 'Cleberson@gmail.com', 'Rua Pedro Vaz Rego', 176, 'Jardim Daysy', 'São Paulo', 'SP', '11943753228', 'Viela 1', 'Masculino', '2023-06-30 14:26:27'),
+(12, 'André Michael', '12345678901', '02319180', 'andremichael@gmail.com', 'Rua João Alves Dias', 760, 'Parque Casa de Pedra', 'São Paulo', 'SP', '11484654354', 'Parque', 'Masculino', '2023-07-05 14:24:04'),
+(15, 'Dennys', '34662097819', '02401200', 'dennys@senac.br', 'Rua Voluntários da Pátria', 3167, 'Santana', 'São Paulo', 'SP', '11999999999', 'Sala 21', 'Masculino', '2023-07-05 16:52:25');
 
 --
 -- Acionadores `tb_cliente`
@@ -229,7 +229,16 @@ INSERT INTO `tb_diskracao` (`DrCodigo`, `DrEsCodigo`, `DrFnCodigo`, `DrQuantidad
 (7, 7, 2, 7, '2023-06-24', '2023-07-07'),
 (8, 8, 3, 9, '2023-06-23', '2023-07-08'),
 (9, 9, 4, 4, '2023-06-22', '2023-07-09'),
-(10, 10, 5, 20, '2023-06-21', '2023-07-10');
+(10, 10, 5, 20, '2023-06-21', '2023-07-10'),
+(20, 7, 4, 2, '0000-00-00', '0000-00-00'),
+(21, 7, 4, 2, '0000-00-00', '0000-00-00'),
+(22, 7, 4, 2, '0000-00-00', '0000-00-00'),
+(23, 10, 5, 10, '0000-00-00', '0000-00-00'),
+(24, 9, 5, 10, '0000-00-00', '0000-00-00'),
+(25, 7, 5, 5, '0000-00-00', '0000-00-00'),
+(26, 7, 5, 5, '0000-00-00', '0000-00-00'),
+(27, 8, 5, 13, '0000-00-00', '0000-00-00'),
+(28, 8, 5, 13, '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -254,10 +263,10 @@ INSERT INTO `tb_estoque` (`EsCodigo`, `EsCodigoRacao`, `EsQuantidade`) VALUES
 (4, 4, 55),
 (5, 5, 61),
 (6, 6, 18),
-(7, 7, 7),
-(8, 8, 13),
-(9, 9, 22),
-(10, 10, 38);
+(7, 7, -5),
+(8, 8, -13),
+(9, 9, 12),
+(10, 10, 28);
 
 -- --------------------------------------------------------
 
@@ -301,12 +310,9 @@ CREATE TABLE `tb_hotel` (
 --
 
 INSERT INTO `tb_hotel` (`HoCodigo`, `HoClCodigo`, `HoAnCodigo`, `HoEntrada`, `HoRetorno`) VALUES
-(14, 2, 4, '2023-06-13', '2023-06-13'),
-(15, 2, 9, '2023-06-13', '2023-08-09'),
-(16, 1, 11, '2023-06-13', '2023-06-28'),
-(17, 6, 8, '2023-06-13', '2023-07-06'),
-(18, 3, 10, '2023-06-13', '2023-10-11'),
-(19, 2, 9, '2023-07-01', '2023-07-08');
+(20, 2, 13, '2023-07-05', '2023-07-18'),
+(22, 2, 13, '2023-07-05', '2023-07-21'),
+(23, 2, 2, '2023-07-05', '2023-07-10');
 
 -- --------------------------------------------------------
 
@@ -358,6 +364,9 @@ CREATE TABLE `tb_taxidog` (
 --
 
 INSERT INTO `tb_taxidog` (`TaCodigo`, `TaClCodigo`, `TaAnCodigo`, `TaData`, `TaPetCare`, `TaPetVet`, `TaHorario`) VALUES
+(1, 15, 0, '2023-07-10', 'Sim', 'Sim', '14:00'),
+(2, 2, 0, '2023-07-05', 'Não', 'Sim', '15:30'),
+(8, 17, 0, '2023-07-10', 'Sim', 'Sim', '14:00'),
 (9, 4, 6, '2023-07-13', 'Não', 'Sim', '14:00'),
 (10, 2, 9, '2024-07-27', 'Não', 'Sim', '14:00'),
 (11, 2, 9, '2023-06-27', 'Sim', 'Não', '15:30'),
@@ -390,7 +399,7 @@ CREATE TABLE `tb_usuario` (
 --
 
 INSERT INTO `tb_usuario` (`UserCodigo`, `UserLogin`, `UserSenha`, `UserLogado`, `UserDataAcesso`) VALUES
-(1, 'SENAC', 'Sistemas2023', 0, '2023-07-03 16:20:26');
+(1, 'SENAC', 'Sistemas2023', 0, '2023-07-05 17:10:45');
 
 --
 -- Índices para tabelas despejadas
@@ -478,19 +487,19 @@ ALTER TABLE `tb_adocao`
 -- AUTO_INCREMENT de tabela `tb_animal`
 --
 ALTER TABLE `tb_animal`
-  MODIFY `AnCodigoPet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `AnCodigoPet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `tb_cliente`
 --
 ALTER TABLE `tb_cliente`
-  MODIFY `ClCodigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ClCodigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `tb_diskracao`
 --
 ALTER TABLE `tb_diskracao`
-  MODIFY `DrCodigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `DrCodigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de tabela `tb_estoque`
@@ -508,7 +517,7 @@ ALTER TABLE `tb_funcionario`
 -- AUTO_INCREMENT de tabela `tb_hotel`
 --
 ALTER TABLE `tb_hotel`
-  MODIFY `HoCodigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `HoCodigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `tb_racao`

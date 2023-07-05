@@ -59,7 +59,10 @@ namespace UI
             this.btnCadastrarAnimal = new System.Windows.Forms.Button();
             this.btnCadastrarCliente = new System.Windows.Forms.Button();
             this.btnAgendar = new System.Windows.Forms.Button();
+            this.picFundo = new System.Windows.Forms.PictureBox();
+            this.btnLimpar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgendamentos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFundo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTaxiDog
@@ -77,7 +80,7 @@ namespace UI
             // 
             this.txtCodTaxi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodTaxi.Location = new System.Drawing.Point(145, 25);
-            this.txtCodTaxi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodTaxi.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodTaxi.Name = "txtCodTaxi";
             this.txtCodTaxi.ReadOnly = true;
             this.txtCodTaxi.Size = new System.Drawing.Size(84, 26);
@@ -87,8 +90,8 @@ namespace UI
             // 
             this.chkPetVet.AutoSize = true;
             this.chkPetVet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPetVet.Location = new System.Drawing.Point(21, 410);
-            this.chkPetVet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkPetVet.Location = new System.Drawing.Point(23, 350);
+            this.chkPetVet.Margin = new System.Windows.Forms.Padding(4);
             this.chkPetVet.Name = "chkPetVet";
             this.chkPetVet.Size = new System.Drawing.Size(172, 24);
             this.chkPetVet.TabIndex = 84;
@@ -99,8 +102,8 @@ namespace UI
             // 
             this.chkPetCare.AutoSize = true;
             this.chkPetCare.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPetCare.Location = new System.Drawing.Point(21, 378);
-            this.chkPetCare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkPetCare.Location = new System.Drawing.Point(23, 318);
+            this.chkPetCare.Margin = new System.Windows.Forms.Padding(4);
             this.chkPetCare.Name = "chkPetCare";
             this.chkPetCare.Size = new System.Drawing.Size(203, 24);
             this.chkPetCare.TabIndex = 83;
@@ -110,8 +113,8 @@ namespace UI
             // btnEditar
             // 
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(612, 673);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditar.Location = new System.Drawing.Point(737, 500);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(130, 91);
             this.btnEditar.TabIndex = 82;
@@ -122,8 +125,8 @@ namespace UI
             // dgvAgendamentos
             // 
             this.dgvAgendamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAgendamentos.Location = new System.Drawing.Point(19, 442);
-            this.dgvAgendamentos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvAgendamentos.Location = new System.Drawing.Point(23, 383);
+            this.dgvAgendamentos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvAgendamentos.Name = "dgvAgendamentos";
             this.dgvAgendamentos.ReadOnly = true;
             this.dgvAgendamentos.Size = new System.Drawing.Size(706, 208);
@@ -134,7 +137,7 @@ namespace UI
             // 
             this.lblHorario.AutoSize = true;
             this.lblHorario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHorario.Location = new System.Drawing.Point(365, 289);
+            this.lblHorario.Location = new System.Drawing.Point(365, 230);
             this.lblHorario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHorario.Name = "lblHorario";
             this.lblHorario.Size = new System.Drawing.Size(65, 20);
@@ -154,8 +157,8 @@ namespace UI
             "15:30",
             "16:00",
             "16:30"});
-            this.cboHorario.Location = new System.Drawing.Point(438, 285);
-            this.cboHorario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboHorario.Location = new System.Drawing.Point(438, 226);
+            this.cboHorario.Margin = new System.Windows.Forms.Padding(4);
             this.cboHorario.Name = "cboHorario";
             this.cboHorario.Size = new System.Drawing.Size(287, 28);
             this.cboHorario.TabIndex = 79;
@@ -164,7 +167,7 @@ namespace UI
             // 
             this.lblServiços.AutoSize = true;
             this.lblServiços.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblServiços.Location = new System.Drawing.Point(15, 346);
+            this.lblServiços.Location = new System.Drawing.Point(17, 286);
             this.lblServiços.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblServiços.Name = "lblServiços";
             this.lblServiços.Size = new System.Drawing.Size(134, 20);
@@ -175,7 +178,7 @@ namespace UI
             // 
             this.lblData.AutoSize = true;
             this.lblData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblData.Location = new System.Drawing.Point(15, 288);
+            this.lblData.Location = new System.Drawing.Point(15, 229);
             this.lblData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblData.Name = "lblData";
             this.lblData.Size = new System.Drawing.Size(175, 20);
@@ -186,8 +189,8 @@ namespace UI
             // 
             this.dtpAgendamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpAgendamento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpAgendamento.Location = new System.Drawing.Point(189, 285);
-            this.dtpAgendamento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpAgendamento.Location = new System.Drawing.Point(189, 226);
+            this.dtpAgendamento.Margin = new System.Windows.Forms.Padding(4);
             this.dtpAgendamento.Name = "dtpAgendamento";
             this.dtpAgendamento.Size = new System.Drawing.Size(164, 26);
             this.dtpAgendamento.TabIndex = 76;
@@ -195,8 +198,8 @@ namespace UI
             // mskRga
             // 
             this.mskRga.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskRga.Location = new System.Drawing.Point(145, 238);
-            this.mskRga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mskRga.Location = new System.Drawing.Point(145, 191);
+            this.mskRga.Margin = new System.Windows.Forms.Padding(4);
             this.mskRga.Mask = "0,000,000";
             this.mskRga.Name = "mskRga";
             this.mskRga.ReadOnly = true;
@@ -207,7 +210,7 @@ namespace UI
             // 
             this.lblRga.AutoSize = true;
             this.lblRga.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRga.Location = new System.Drawing.Point(17, 241);
+            this.lblRga.Location = new System.Drawing.Point(17, 194);
             this.lblRga.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRga.Name = "lblRga";
             this.lblRga.Size = new System.Drawing.Size(49, 20);
@@ -217,9 +220,10 @@ namespace UI
             // txtCodAnimal
             // 
             this.txtCodAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodAnimal.Location = new System.Drawing.Point(650, 133);
-            this.txtCodAnimal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodAnimal.Location = new System.Drawing.Point(650, 95);
+            this.txtCodAnimal.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodAnimal.Name = "txtCodAnimal";
+            this.txtCodAnimal.ReadOnly = true;
             this.txtCodAnimal.Size = new System.Drawing.Size(75, 26);
             this.txtCodAnimal.TabIndex = 73;
             // 
@@ -227,7 +231,7 @@ namespace UI
             // 
             this.lblCodAnimal.AutoSize = true;
             this.lblCodAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodAnimal.Location = new System.Drawing.Point(527, 136);
+            this.lblCodAnimal.Location = new System.Drawing.Point(527, 98);
             this.lblCodAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodAnimal.Name = "lblCodAnimal";
             this.lblCodAnimal.Size = new System.Drawing.Size(115, 20);
@@ -237,8 +241,8 @@ namespace UI
             // txtTipoAnimal
             // 
             this.txtTipoAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTipoAnimal.Location = new System.Drawing.Point(388, 188);
-            this.txtTipoAnimal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTipoAnimal.Location = new System.Drawing.Point(388, 151);
+            this.txtTipoAnimal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTipoAnimal.Name = "txtTipoAnimal";
             this.txtTipoAnimal.ReadOnly = true;
             this.txtTipoAnimal.Size = new System.Drawing.Size(337, 26);
@@ -248,7 +252,7 @@ namespace UI
             // 
             this.lblTipoAnimal.AutoSize = true;
             this.lblTipoAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoAnimal.Location = new System.Drawing.Point(348, 191);
+            this.lblTipoAnimal.Location = new System.Drawing.Point(348, 154);
             this.lblTipoAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTipoAnimal.Name = "lblTipoAnimal";
             this.lblTipoAnimal.Size = new System.Drawing.Size(43, 20);
@@ -259,7 +263,7 @@ namespace UI
             // 
             this.lblAnimal.AutoSize = true;
             this.lblAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnimal.Location = new System.Drawing.Point(17, 191);
+            this.lblAnimal.Location = new System.Drawing.Point(17, 154);
             this.lblAnimal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAnimal.Name = "lblAnimal";
             this.lblAnimal.Size = new System.Drawing.Size(61, 20);
@@ -270,8 +274,8 @@ namespace UI
             // 
             this.cboAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboAnimal.FormattingEnabled = true;
-            this.cboAnimal.Location = new System.Drawing.Point(146, 188);
-            this.cboAnimal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboAnimal.Location = new System.Drawing.Point(146, 151);
+            this.cboAnimal.Margin = new System.Windows.Forms.Padding(4);
             this.cboAnimal.Name = "cboAnimal";
             this.cboAnimal.Size = new System.Drawing.Size(194, 28);
             this.cboAnimal.TabIndex = 68;
@@ -280,8 +284,8 @@ namespace UI
             // mskTelefone
             // 
             this.mskTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskTelefone.Location = new System.Drawing.Point(397, 133);
-            this.mskTelefone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mskTelefone.Location = new System.Drawing.Point(397, 95);
+            this.mskTelefone.Margin = new System.Windows.Forms.Padding(4);
             this.mskTelefone.Mask = "(00)00000-0000";
             this.mskTelefone.Name = "mskTelefone";
             this.mskTelefone.ReadOnly = true;
@@ -292,7 +296,7 @@ namespace UI
             // 
             this.lblTelefone.AutoSize = true;
             this.lblTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefone.Location = new System.Drawing.Point(314, 136);
+            this.lblTelefone.Location = new System.Drawing.Point(314, 98);
             this.lblTelefone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTelefone.Name = "lblTelefone";
             this.lblTelefone.Size = new System.Drawing.Size(75, 20);
@@ -302,8 +306,8 @@ namespace UI
             // mskCpf
             // 
             this.mskCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskCpf.Location = new System.Drawing.Point(145, 133);
-            this.mskCpf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mskCpf.Location = new System.Drawing.Point(145, 95);
+            this.mskCpf.Margin = new System.Windows.Forms.Padding(4);
             this.mskCpf.Mask = "000,000,000-00";
             this.mskCpf.Name = "mskCpf";
             this.mskCpf.ReadOnly = true;
@@ -314,7 +318,7 @@ namespace UI
             // 
             this.lblCpf.AutoSize = true;
             this.lblCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCpf.Location = new System.Drawing.Point(17, 136);
+            this.lblCpf.Location = new System.Drawing.Point(17, 98);
             this.lblCpf.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCpf.Name = "lblCpf";
             this.lblCpf.Size = new System.Drawing.Size(44, 20);
@@ -324,8 +328,8 @@ namespace UI
             // txtCodCliente
             // 
             this.txtCodCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodCliente.Location = new System.Drawing.Point(585, 79);
-            this.txtCodCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodCliente.Location = new System.Drawing.Point(585, 61);
+            this.txtCodCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodCliente.Name = "txtCodCliente";
             this.txtCodCliente.Size = new System.Drawing.Size(140, 26);
             this.txtCodCliente.TabIndex = 63;
@@ -335,7 +339,7 @@ namespace UI
             // 
             this.lblCodigoCliente.AutoSize = true;
             this.lblCodigoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoCliente.Location = new System.Drawing.Point(461, 82);
+            this.lblCodigoCliente.Location = new System.Drawing.Point(461, 64);
             this.lblCodigoCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigoCliente.Name = "lblCodigoCliente";
             this.lblCodigoCliente.Size = new System.Drawing.Size(116, 20);
@@ -345,8 +349,8 @@ namespace UI
             // txtNomeCliente
             // 
             this.txtNomeCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeCliente.Location = new System.Drawing.Point(146, 79);
-            this.txtNomeCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNomeCliente.Location = new System.Drawing.Point(146, 61);
+            this.txtNomeCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.ReadOnly = true;
             this.txtNomeCliente.Size = new System.Drawing.Size(307, 26);
@@ -356,7 +360,7 @@ namespace UI
             // 
             this.lblNomeCliente.AutoSize = true;
             this.lblNomeCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomeCliente.Location = new System.Drawing.Point(17, 82);
+            this.lblNomeCliente.Location = new System.Drawing.Point(17, 64);
             this.lblNomeCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNomeCliente.Name = "lblNomeCliente";
             this.lblNomeCliente.Size = new System.Drawing.Size(108, 20);
@@ -366,8 +370,8 @@ namespace UI
             // btnCadastrarAnimal
             // 
             this.btnCadastrarAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarAnimal.Location = new System.Drawing.Point(438, 673);
-            this.btnCadastrarAnimal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCadastrarAnimal.Location = new System.Drawing.Point(426, 286);
+            this.btnCadastrarAnimal.Margin = new System.Windows.Forms.Padding(4);
             this.btnCadastrarAnimal.Name = "btnCadastrarAnimal";
             this.btnCadastrarAnimal.Size = new System.Drawing.Size(130, 91);
             this.btnCadastrarAnimal.TabIndex = 59;
@@ -378,8 +382,8 @@ namespace UI
             // btnCadastrarCliente
             // 
             this.btnCadastrarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarCliente.Location = new System.Drawing.Point(21, 673);
-            this.btnCadastrarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCadastrarCliente.Location = new System.Drawing.Point(599, 286);
+            this.btnCadastrarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.btnCadastrarCliente.Name = "btnCadastrarCliente";
             this.btnCadastrarCliente.Size = new System.Drawing.Size(130, 91);
             this.btnCadastrarCliente.TabIndex = 58;
@@ -390,8 +394,8 @@ namespace UI
             // btnAgendar
             // 
             this.btnAgendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgendar.Location = new System.Drawing.Point(223, 673);
-            this.btnAgendar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgendar.Location = new System.Drawing.Point(737, 383);
+            this.btnAgendar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgendar.Name = "btnAgendar";
             this.btnAgendar.Size = new System.Drawing.Size(130, 91);
             this.btnAgendar.TabIndex = 57;
@@ -399,12 +403,36 @@ namespace UI
             this.btnAgendar.UseVisualStyleBackColor = true;
             this.btnAgendar.Click += new System.EventHandler(this.btnAgendar_Click);
             // 
+            // picFundo
+            // 
+            this.picFundo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picFundo.Image = global::UI.Properties.Resources.bg_taxidog;
+            this.picFundo.Location = new System.Drawing.Point(924, -3);
+            this.picFundo.Name = "picFundo";
+            this.picFundo.Size = new System.Drawing.Size(526, 665);
+            this.picFundo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picFundo.TabIndex = 87;
+            this.picFundo.TabStop = false;
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.BackColor = System.Drawing.Color.White;
+            this.btnLimpar.Image = global::UI.Properties.Resources.eraser_fill;
+            this.btnLimpar.Location = new System.Drawing.Point(737, 286);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(130, 92);
+            this.btnLimpar.TabIndex = 88;
+            this.btnLimpar.UseVisualStyleBackColor = false;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // frmTaxiDog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(212)))), ((int)(((byte)(209)))));
-            this.ClientSize = new System.Drawing.Size(774, 779);
+            this.ClientSize = new System.Drawing.Size(1444, 612);
+            this.Controls.Add(this.btnLimpar);
+            this.Controls.Add(this.picFundo);
             this.Controls.Add(this.lblTaxiDog);
             this.Controls.Add(this.txtCodTaxi);
             this.Controls.Add(this.chkPetVet);
@@ -437,12 +465,13 @@ namespace UI
             this.Controls.Add(this.btnAgendar);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(89)))), ((int)(((byte)(113)))));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTaxiDog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmTaxiDog";
             this.Load += new System.EventHandler(this.frmTaxiDog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgendamentos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFundo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -480,5 +509,7 @@ namespace UI
         private System.Windows.Forms.Button btnCadastrarAnimal;
         private System.Windows.Forms.Button btnCadastrarCliente;
         private System.Windows.Forms.Button btnAgendar;
+        private System.Windows.Forms.PictureBox picFundo;
+        private System.Windows.Forms.Button btnLimpar;
     }
 }

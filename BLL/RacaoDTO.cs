@@ -164,7 +164,7 @@ namespace BLL
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add(new MySqlParameter("@pEsCodigo", dados.Codigo));
+                cmd.Parameters.Add(new MySqlParameter("@pEsCodigo", dados.CodigoRacao));
                 cmd.Parameters.Add(new MySqlParameter("@pFnCodigo", dados.CodigoFuncionario));
                 cmd.Parameters.Add(new MySqlParameter("@pDrQuantidade", dados.Quantidade));
                 cmd.Parameters.Add(new MySqlParameter("@pDrEntrada", dados.Entrada));

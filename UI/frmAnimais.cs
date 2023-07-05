@@ -135,6 +135,7 @@ namespace UI
                 //Habilitar os botões de Editar e Excluir
                 btnAtualizar.Visible = true;
                 btnDeletar.Visible = true;
+                btnSalvar.Enabled = false;
                 //Desabilitar o campo Código do Dono.
                 //A constraint não permite atualizar esta informação.
             }
@@ -149,14 +150,33 @@ namespace UI
             SalvarAnimais salvarAnimais = new SalvarAnimais();
             //Acesso às variáveis por meio do objeto animais.
             //animais.codigoPet = Convert.ToInt32(txtCodigoPet.Text);
-            animais.CodigoDono = Convert.ToInt32(cboCodigoDono.Text);
-            animais.NomePet = txtNomePet.Text;
-            animais.Funcionario = txtFuncionario.Text;
-            //Teste de funcionamento
-            //Chamada do método InserirDados por meio do objeto salvarAnimais
-            salvarAnimais.InserirDados(animais);
-            //Exibir a mensagem de Sucesso ou Falha
-            MessageBox.Show(animais.Mensagem, "Aviso", MessageBoxButtons.OK);
+            if (txtNomePet.Text == "" || txtFuncionario.Text == "" || txtRaca.Text == "" || txtCor.Text == "" || txtTipo.Text == "" || txtPeso.Text == "" || txtPedigree.Text == "" || 
+                mskRga.Text == "" || txtObservacao.Text == "")
+            {
+                MessageBox.Show("Todos os campos devem ser preenchidos", "Aviso");
+            }
+            else
+            {
+                animais.CodigoDono = Convert.ToInt32(cboCodigoDono.Text);
+                animais.NomePet = txtNomePet.Text;
+                animais.Funcionario = txtFuncionario.Text;
+                animais.Raca = txtRaca.Text;
+                animais.Cor = txtCor.Text;
+                animais.Tipo = txtTipo.Text;
+                animais.Peso = Convert.ToInt32(txtPeso.Text);
+                animais.Nascimento = dtpNascimento.Value;
+                animais.Pedigree = txtPedigree.Text;
+                animais.Rga = mskRga.Text;
+                animais.Sexo = cboSexo.Text;
+                animais.Observacao = txtObservacao.Text;
+                //Teste de funcionamento
+                //Chamada do método InserirDados por meio do objeto salvarAnimais
+                salvarAnimais.InserirDados(animais);
+                //Exibir a mensagem de Sucesso ou Falha
+                MessageBox.Show(animais.Mensagem, "Aviso", MessageBoxButtons.OK);
+                CarregarGrid();
+            }
+            
 
         }
         private void btnSair_Click(object sender, EventArgs e)
@@ -212,6 +232,8 @@ namespace UI
                 }
                 #endregion
             }
+
+            CarregarGrid();
         }
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
@@ -336,10 +358,10 @@ namespace UI
                 int resultado = CalcularIdade(dtpNascimento.Value);
                 txtIdade.Text = resultado.ToString();
             }
-            else
+            /*else
             {
                 MessageBox.Show("Data Inválida", "Aviso");
-            }
+            }*/
         }
         public int CalcularIdade(DateTime dataNascimento)
         {
@@ -353,6 +375,11 @@ namespace UI
                 idade -= 1; //Equivalente a idade = idade -1
             }
             return idade;
+        }
+
+        private void dgvListaAnimais_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

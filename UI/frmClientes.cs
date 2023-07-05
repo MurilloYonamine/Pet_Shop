@@ -130,44 +130,51 @@ namespace UI
             SalvarClientes salvarClientes = new SalvarClientes();
 
             // Alimentar as variáveis por meio deste objeto.
-            clientes.Nome = txtNome.Text;
-            clientes.Cpf = mskCpf.Text.Replace("-", "").Replace(".", "");
-            clientes.Email = txtEmail.Text;
-            clientes.Cep = mskCep.Text.Replace("-", "");
-            clientes.Endereco = txtEndereco.Text;
-            clientes.Cidade = txtCidade.Text;
-            clientes.Uf = txtUf.Text;
-            clientes.Bairro = txtBairro.Text;
-            clientes.Numero = Convert.ToInt32(txtNumero.Text);
-            clientes.Telefone = mskTelefone.Text.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ","");
-            clientes.Complemento = txtComplemento.Text;
-
-            if (rdoFeminino.Checked)
+            if (txtNome.Text == "" || mskCpf.Text == "" || txtEmail.Text == "" || txtEndereco.Text == "" || txtCidade.Text == "" || txtUf.Text == "" || txtBairro.Text == "" ||
+                txtNumero.Text == "" || mskTelefone.Text == "")
             {
-                clientes.Genero = rdoFeminino.Text;
-            }
-            else if (rdoMasculino.Checked)
-            {
-                clientes.Genero = rdoMasculino.Text;
+                MessageBox.Show("Todos os campos devem ser preenchidos", "Aviso");
             }
             else
             {
-                clientes.Genero = txtOutros.Text;
+                clientes.Nome = txtNome.Text;
+                clientes.Cpf = mskCpf.Text.Replace("-", "").Replace(".", "");
+                clientes.Email = txtEmail.Text;
+                clientes.Cep = mskCep.Text.Replace("-", "");
+                clientes.Endereco = txtEndereco.Text;
+                clientes.Cidade = txtCidade.Text;
+                clientes.Uf = txtUf.Text;
+                clientes.Bairro = txtBairro.Text;
+                clientes.Numero = Convert.ToInt32(txtNumero.Text);
+                clientes.Telefone = mskTelefone.Text.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
+                clientes.Complemento = txtComplemento.Text;
+
+                if (rdoFeminino.Checked)
+                {
+                    clientes.Genero = rdoFeminino.Text;
+                }
+                else if (rdoMasculino.Checked)
+                {
+                    clientes.Genero = rdoMasculino.Text;
+                }
+                else
+                {
+                    clientes.Genero = txtOutros.Text;
+                }
+
+                // Chamada do método SalvarClientes
+                salvarClientes.InserirDados(clientes);
+
+                // Exibir a mensagem de Sucesso ou Falha
+                MessageBox.Show(clientes.Mensagem, "Aviso", MessageBoxButtons.OK);
+
+                // Configurar a Grid após inserir novos dados
+                CarregarGrid();
+                ConfigurarDataGridView();
+
+                // Limpar os campos após a inserção dos dados
+                LimparCampos();
             }
-
-            // Chamada do método SalvarClientes
-            salvarClientes.InserirDados(clientes);
-
-            // Exibir a mensagem de Sucesso ou Falha
-            MessageBox.Show(clientes.Mensagem, "Aviso", MessageBoxButtons.OK);
-
-            // Configurar a Grid após inserir novos dados
-            CarregarGrid();
-            ConfigurarDataGridView();
-
-            // Limpar os campos após a inserção dos dados
-            LimparCampos();
-
         }
         private void btnPesquisarCep_Click(object sender, EventArgs e)
         {

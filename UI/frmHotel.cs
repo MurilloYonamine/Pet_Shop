@@ -27,6 +27,7 @@ namespace UI
             txtCodHotel.Text = hotel.CodigoHotel.ToString();
             CarregarGridHotel();
             ConfigurarDataGrid();
+            
         }
         // ------------------------------------------------------------------------------- //
         // Configuração da GridView
@@ -39,11 +40,13 @@ namespace UI
                 txtCodHotel.Text = dgvListarHospedagens.Rows[e.RowIndex].Cells[0].Value.ToString();
                 txtCodCliente.Text = dgvListarHospedagens.Rows[e.RowIndex].Cells[1].Value.ToString();
                 txtCodigoAnimal.Text = dgvListarHospedagens.Rows[e.RowIndex].Cells[2].Value.ToString();
+                //txt.Text = dgvListarHospedagens.Rows[e.RowIndex].Cells[2].Value.ToString();
                 dtpEntrada.Value = Convert.ToDateTime(dgvListarHospedagens.Rows[e.RowIndex].Cells[3].Value);
                 dtpRetorno.Value = Convert.ToDateTime(dgvListarHospedagens.Rows[e.RowIndex].Cells[4].Value);
 
                 btnEditar.Visible = true; //Ou enable
                 btnHospedar.Enabled = true;
+                btnHospedar.Enabled = false;
             }
         }
         public void ConfigurarDataGrid()
@@ -84,25 +87,31 @@ namespace UI
         {
             HotelDTO hotel = new HotelDTO();
             SalvarHospedagem salvarHospedagem = new SalvarHospedagem();
+            if (txtNomeCliente.Text == "" || mskCpf.Text == "" || mskTelefone.Text == "" || txtCodCliente.Text == "" || txtTipoAnimal.Text == "" || txtCodigoAnimal.Text == "")
+            {
+                MessageBox.Show("Todos os campos devem ser preenchidos", "Aviso");
+            }
+            else
+            {
+                hotel.Cliente = txtNomeCliente.Text;
+                hotel.Cpf = mskCpf.Text;
+                hotel.Telefone = mskTelefone.Text;
+                hotel.CodigoCliente = Convert.ToInt32(txtCodCliente.Text);
+                hotel.NomeAnimal = txtTipoAnimal.Text;
+                hotel.Rga = mskRga.Text;
+                //hotel.animal = cboAnimal.Text;
+                hotel.DtEntrada = dtpEntrada.Value;
+                hotel.DtRetorno = dtpRetorno.Value;
+                hotel.CodigoAnimal = Convert.ToInt32(txtCodigoAnimal.Text);
 
-            hotel.Cliente = txtNomeCliente.Text;
-            hotel.Cpf = mskCpf.Text;
-            hotel.Telefone = mskTelefone.Text;
-            hotel.CodigoCliente = Convert.ToInt32(txtCodCliente.Text);
-            hotel.NomeAnimal = txtTipoAnimal.Text;
-            hotel.Rga = mskRga.Text;
-            //hotel.animal = cboAnimal.Text;
-            hotel.DtEntrada = dtpEntrada.Value;
-            hotel.DtRetorno = dtpRetorno.Value;
-            hotel.CodigoAnimal = Convert.ToInt32(txtCodigoAnimal.Text);
+                salvarHospedagem.InserirHospedagem(hotel);
+                CarregarGridHotel();
+                Limpar();
 
-            salvarHospedagem.InserirHospedagem(hotel);
-            CarregarGridHotel();
-            Limpar();
+                MessageBox.Show(hotel.Mensagem, "Aviso", MessageBoxButtons.OK);
 
-            MessageBox.Show(hotel.Mensagem, "Aviso", MessageBoxButtons.OK);
-
-            Limpar();
+                Limpar();
+            }
         }
         private void btnCadastrarCliente_Click(object sender, EventArgs e)
         {
@@ -255,16 +264,15 @@ namespace UI
             cboAnimal.Items.Clear();
         }
 
-        
+        private void dgvListarHospedagens_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-        
+        }
 
-        
-        
-
-       
-        
-
-        
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            Limpar();
+            btnHospedar.Enabled = true;
+        }
     }
 }
