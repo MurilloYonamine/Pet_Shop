@@ -35,7 +35,7 @@ namespace BLL
             {
                 //Instrução de inserção no banco de dados
                 string sql = "INSERT INTO tb_taxidog " +
-                    "(TaCodigo, TaClCodigo, TaData, TaPetCare, TaPetVet, TaHorario)" +
+                    "(TaClCodigo, TaAnCodigo,TaData, TaPetCare, TaPetVet, TaHorario)" +
                 "VALUES (@codcliente, @codanimal, @dtagendamento, @petcare, @petvet, @horario)";
 
                 //Instância que realizará a conexão e execução do Insert
@@ -83,7 +83,7 @@ namespace BLL
             try
             {
                 //String com o comando de atualização
-                string sql = "UPDATE tb_taxidog SET TaCodigo=@codcliente, TaAnCodigo=@codanimal," +
+                string sql = "UPDATE tb_taxidog SET TaClCodigo=@codcliente, TaAnCodigo=@codanimal," +
                     "TaData=@dtagendamento, TaPetCare=@petcare, TaPetVet=@petvet, TaHorario=@horario WHERE TaCodigo=@codigo";
                 //Uso da abertura de Conexão e da string sql
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
@@ -125,7 +125,7 @@ namespace BLL
             try
             {
                 //Instrução de inserção no banco de dados
-                string sql = "SELECT TaCodigo FROM tb_taxidog ORDER BY TaCodTaxi DESC LIMIT 1;";
+                string sql = "SELECT TaCodigo FROM tb_taxidog ORDER BY TaCodigo DESC LIMIT 1;";
 
                 MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
 
@@ -133,7 +133,7 @@ namespace BLL
                 {
                     if (reader.Read())
                     {
-                        dados.CodigoTaxi = reader.GetInt32("TaCodTaxi") + 1;
+                        dados.CodigoTaxi = reader.GetInt32("TaCodigo") + 1;
                     }
                 }
             }

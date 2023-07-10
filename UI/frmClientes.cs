@@ -257,6 +257,7 @@ namespace UI
             LimparCampos();
             MessageBox.Show(clientes.Mensagem, "Aviso",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LimparCampos();
         }
         private void btnLimpar_Click(object sender, EventArgs e)
         {

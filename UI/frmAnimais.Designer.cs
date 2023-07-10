@@ -37,7 +37,6 @@ namespace UI
             this.lblCodigoDono = new System.Windows.Forms.Label();
             this.cboCodigoDono = new System.Windows.Forms.ComboBox();
             this.lblFuncionario = new System.Windows.Forms.Label();
-            this.txtFuncionario = new System.Windows.Forms.TextBox();
             this.lblRaca = new System.Windows.Forms.Label();
             this.txtRaca = new System.Windows.Forms.TextBox();
             this.lblCor = new System.Windows.Forms.Label();
@@ -68,6 +67,7 @@ namespace UI
             this.txtPesquisaDono = new System.Windows.Forms.TextBox();
             this.btnDeletar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
+            this.cboFuncionario = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBgDog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaAnimais)).BeginInit();
             this.SuspendLayout();
@@ -148,13 +148,6 @@ namespace UI
             this.lblFuncionario.Size = new System.Drawing.Size(94, 18);
             this.lblFuncionario.TabIndex = 10;
             this.lblFuncionario.Text = "Funcionário:";
-            // 
-            // txtFuncionario
-            // 
-            this.txtFuncionario.Location = new System.Drawing.Point(700, 158);
-            this.txtFuncionario.Name = "txtFuncionario";
-            this.txtFuncionario.Size = new System.Drawing.Size(154, 26);
-            this.txtFuncionario.TabIndex = 6;
             // 
             // lblRaca
             // 
@@ -451,12 +444,21 @@ namespace UI
             this.btnAtualizar.Visible = false;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
+            // cboFuncionario
+            // 
+            this.cboFuncionario.FormattingEnabled = true;
+            this.cboFuncionario.Location = new System.Drawing.Point(700, 158);
+            this.cboFuncionario.Name = "cboFuncionario";
+            this.cboFuncionario.Size = new System.Drawing.Size(154, 26);
+            this.cboFuncionario.TabIndex = 40;
+            // 
             // frmAnimais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(212)))), ((int)(((byte)(209)))));
             this.ClientSize = new System.Drawing.Size(1412, 667);
+            this.Controls.Add(this.cboFuncionario);
             this.Controls.Add(this.btnDeletar);
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.lblPesquisaDono);
@@ -488,7 +490,6 @@ namespace UI
             this.Controls.Add(this.lblRaca);
             this.Controls.Add(this.txtRaca);
             this.Controls.Add(this.lblFuncionario);
-            this.Controls.Add(this.txtFuncionario);
             this.Controls.Add(this.cboCodigoDono);
             this.Controls.Add(this.lblCodigoDono);
             this.Controls.Add(this.lblNomePet);
@@ -519,7 +520,6 @@ namespace UI
         private System.Windows.Forms.Label lblCodigoDono;
         private System.Windows.Forms.ComboBox cboCodigoDono;
         private System.Windows.Forms.Label lblFuncionario;
-        private System.Windows.Forms.TextBox txtFuncionario;
         private System.Windows.Forms.Label lblRaca;
         private System.Windows.Forms.TextBox txtRaca;
         private System.Windows.Forms.Label lblCor;
@@ -550,5 +550,6 @@ namespace UI
         private System.Windows.Forms.TextBox txtPesquisaDono;
         private System.Windows.Forms.Button btnDeletar;
         private System.Windows.Forms.Button btnAtualizar;
+        private System.Windows.Forms.ComboBox cboFuncionario;
     }
 }

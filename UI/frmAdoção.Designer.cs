@@ -143,6 +143,7 @@ namespace UI
             // 
             this.txtCliente.Location = new System.Drawing.Point(551, 138);
             this.txtCliente.Name = "txtCliente";
+            this.txtCliente.ReadOnly = true;
             this.txtCliente.Size = new System.Drawing.Size(165, 26);
             this.txtCliente.TabIndex = 10;
             // 

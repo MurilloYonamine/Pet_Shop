@@ -22,6 +22,12 @@ namespace UI
 
         private void frmAnimais_Load(object sender, EventArgs e)
         {
+            AnimaisDTO animais = new AnimaisDTO();
+            ConsultarAnimais consultarAnimais = new ConsultarAnimais();
+
+            cboFuncionario.DataSource = consultarAnimais.ListarFuncionario(animais);
+            cboFuncionario.ValueMember = "FnCodigo";
+            cboFuncionario.DisplayMember = "FnNome";
             CarregarGrid();
             ConfigurarDataGridView();
             ListarCodigoDono();
@@ -62,6 +68,7 @@ namespace UI
                 dgvListaAnimais.Columns[10].HeaderText = "RGA";
                 dgvListaAnimais.Columns[11].HeaderText = "Sexo";
                 dgvListaAnimais.Columns[12].HeaderText = "Observação";
+                dgvListaAnimais.Columns[13].HeaderText = "Funcionário";
 
                 //Configurar a largura das colunas no DataGridView
                 dgvListaAnimais.Columns[0].Width = 50;
@@ -122,7 +129,7 @@ namespace UI
                 txtCodigoPet.Text = dgvListaAnimais.Rows[e.RowIndex].Cells[0].Value.ToString();
                 txtNomePet.Text = dgvListaAnimais.Rows[e.RowIndex].Cells[1].Value.ToString();
                 cboCodigoDono.Text = dgvListaAnimais.Rows[e.RowIndex].Cells[2].Value.ToString();
-                txtFuncionario.Text = dgvListaAnimais.Rows[e.RowIndex].Cells[3].Value.ToString();
+                cboFuncionario.Text = dgvListaAnimais.Rows[e.RowIndex].Cells[13].Value.ToString();
                 txtRaca.Text = dgvListaAnimais.Rows[e.RowIndex].Cells[4].Value.ToString();
                 txtCor.Text = dgvListaAnimais.Rows[e.RowIndex].Cells[5].Value.ToString();
                 txtTipo.Text = dgvListaAnimais.Rows[e.RowIndex].Cells[6].Value.ToString();
@@ -150,7 +157,7 @@ namespace UI
             SalvarAnimais salvarAnimais = new SalvarAnimais();
             //Acesso às variáveis por meio do objeto animais.
             //animais.codigoPet = Convert.ToInt32(txtCodigoPet.Text);
-            if (txtNomePet.Text == "" || txtFuncionario.Text == "" || txtRaca.Text == "" || txtCor.Text == "" || txtTipo.Text == "" || txtPeso.Text == "" || txtPedigree.Text == "" || 
+            if (txtNomePet.Text == "" || cboFuncionario.Text == "" || txtRaca.Text == "" || txtCor.Text == "" || txtTipo.Text == "" || txtPeso.Text == "" || txtPedigree.Text == "" || 
                 mskRga.Text == "" || txtObservacao.Text == "")
             {
                 MessageBox.Show("Todos os campos devem ser preenchidos", "Aviso");
@@ -159,14 +166,14 @@ namespace UI
             {
                 animais.CodigoDono = Convert.ToInt32(cboCodigoDono.Text);
                 animais.NomePet = txtNomePet.Text;
-                animais.Funcionario = txtFuncionario.Text;
+                animais.Funcionario = Convert.ToInt32(cboFuncionario.SelectedValue);         
                 animais.Raca = txtRaca.Text;
                 animais.Cor = txtCor.Text;
                 animais.Tipo = txtTipo.Text;
                 animais.Peso = Convert.ToInt32(txtPeso.Text);
                 animais.Nascimento = dtpNascimento.Value;
                 animais.Pedigree = txtPedigree.Text;
-                animais.Rga = mskRga.Text;
+                animais.Rga = mskRga.Text.Replace(".", "");
                 animais.Sexo = cboSexo.Text;
                 animais.Observacao = txtObservacao.Text;
                 //Teste de funcionamento
@@ -175,6 +182,7 @@ namespace UI
                 //Exibir a mensagem de Sucesso ou Falha
                 MessageBox.Show(animais.Mensagem, "Aviso", MessageBoxButtons.OK);
                 CarregarGrid();
+                LimparCampos();
             }
             
 
@@ -244,7 +252,7 @@ namespace UI
             animais.CodigoPet = Convert.ToInt32(txtCodigoPet.Text);
             animais.NomePet = txtNomePet.Text;
             animais.CodigoDono = Convert.ToInt32(cboCodigoDono.Text);
-            animais.Funcionario = txtFuncionario.Text;
+            animais.Funcionario = Convert.ToInt32(cboFuncionario.SelectedValue);
             animais.Raca = txtRaca.Text;
             animais.Cor = txtCor.Text;
             animais.Tipo = txtTipo.Text;
@@ -260,6 +268,7 @@ namespace UI
             CarregarGrid();
             ConfigurarDataGridView();
             MessageBox.Show(animais.Mensagem, "Aviso", MessageBoxButtons.OK);
+            LimparCampos();
         }
         private void btnLimpar_Click(object sender, EventArgs e)
         {
@@ -321,7 +330,7 @@ namespace UI
             txtCodigoPet.Clear();
             txtNomePet.Clear();
             cboCodigoDono.SelectedIndex = -1;
-            txtFuncionario.Clear();
+            cboFuncionario.SelectedIndex = -1;
             txtRaca.Clear();
             txtCor.Clear();
             txtTipo.Clear();

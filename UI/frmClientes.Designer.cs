@@ -366,6 +366,8 @@ namespace UI
             // 
             // dgvListaClientes
             // 
+            this.dgvListaClientes.AllowUserToAddRows = false;
+            this.dgvListaClientes.AllowUserToDeleteRows = false;
             this.dgvListaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaClientes.Location = new System.Drawing.Point(1115, 139);
             this.dgvListaClientes.Name = "dgvListaClientes";

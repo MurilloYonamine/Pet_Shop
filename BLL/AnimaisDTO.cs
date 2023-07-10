@@ -19,7 +19,7 @@ namespace BLL
         public string NomePet { get; set; }
         public int CodigoDono { get; set; }
         public string NomeDono { get; set; }
-        public string Funcionario { get; set; }
+        public int Funcionario { get; set; }
         public string Raca { get; set; }
         public string Cor { get; set; }
         public string Tipo { get; set; }
@@ -87,7 +87,9 @@ namespace BLL
             try
             {
                 //Instrução de comando para o Banco de dados
-                string sql = "SELECT * FROM tb_animal";
+                string sql = "SELECT tb_animal.*, FnNome FROM tb_animal " +
+                    "INNER JOIN tb_funcionario " +
+                    "on AnFnNome = FnCodigo";
                 //Adaptação dos dados do Banco de dados para o formato
                 //de tabela com a execução da Conexão e Select
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(sql, Conexao.obterConexao());
@@ -178,6 +180,23 @@ namespace BLL
             catch (MySqlException erro)
             {
                 dados.Mensagem = "ERRO - ConsultarAnimais - ListarCodigoDono: " + erro.Message.ToString();
+            }
+            return tabela;
+        }
+        public DataTable ListarFuncionario(AnimaisDTO dados)
+        {
+            DataTable tabela = new DataTable();
+            try
+            {
+                string sql = "SELECT FnCodigo, FnNome FROM tb_funcionario";
+
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(sql, Conexao.obterConexao());
+                adaptador.Fill(tabela);
+                Conexao.fecharConexao();
+            }
+            catch (MySqlException erro)
+            {
+                dados.Mensagem = "ERRO - ConsultarAnimais - ListarFuncionario -" + erro.ErrorCode + erro.Message;
             }
             return tabela;
         }

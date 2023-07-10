@@ -123,6 +123,41 @@ namespace BLL
             //Este retorno será no formato de tabela, sendo aplicado ao DataGridView
             return tabela;
         }
+        public DataTable ListarDiskRacaoDataGridView(RacaoDTO dados)
+        {
+            //Declaração da variável que receberá os dados no formato de tabela.
+            DataTable tabela = new DataTable();
+            try
+            {
+                //Intrução de comando SELECT para o BD
+                string sql = "SELECT dr.DrCodigo, Ra.RaNome,fun.fnNome, dr.DrQuantidade, dr.DrEntrada, dr.DrSaida " +
+                    "FROM tb_diskracao as dr " +
+                    "INNER JOIN tb_estoque as es " +
+                    "on dr.DrEsCodigo = es.EsCodigo " +
+                    "INNER JOIN tb_racao as ra " +
+                    "on es.EsCodigo = ra.RaCodigo " +
+                    "INNER JOIN tb_funcionario as fun " +
+                    "on dr.DrFnCodigo = fun.FnCodigo " +
+                    "ORDER BY dr.DrSaida desc";
+                //Comando para o SELECT e a Conexão - MySqlCommand
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Adaptar os dados do BD para o formato de tabela
+                //com a execução da Conexão e SELECT
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(cmd);
+                //Preenchimento da variável em formato de tabela - Fill = preencher
+                adaptador.Fill(tabela);
+                //Fechar a conexão
+                Conexao.fecharConexao();
+            }
+            catch (MySqlException erro)
+            {
+                dados.Mensagem = "Erro - ConsultarRacao - ListarDiskRacaoDataGridView " +
+                erro.Message.ToString();
+            }
+            //O comando SELECT sempre precisa retornar algum dado
+            //Este retorno será no formato de tabela, sendo aplicado ao DataGridView
+            return tabela;
+        }
     }
     public class InserirRacao
     {

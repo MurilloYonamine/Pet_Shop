@@ -252,7 +252,15 @@ namespace BLL
             }
             catch (MySqlException erro)
             {
-                dados.Mensagem = "ERRO - DeletarClientes - DeletarDados - " + erro.Message.ToString();
+                if (erro.ErrorCode == -2147467259)
+                {
+                    dados.Mensagem = "ERRO - DeletarClientes - DeletarDados - NÃO É POSSIVEL EXCLUIR O CLIENTE POIS EXITE PETS CADATRADOS" ;
+                }
+                else
+                {
+                    dados.Mensagem = "ERRO - DeletarClientes - DeletarDados - " + erro.Message.ToString();
+                }
+                
             }
         }
     }

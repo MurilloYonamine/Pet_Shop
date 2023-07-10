@@ -200,6 +200,7 @@ namespace UI
             ConfigurarDataGrid();
             MessageBox.Show(hotel.Mensagem, "Aviso",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Limpar();
         }
         // ------------------------------------------------------------------------------- //
         // Configurações dos TextBox do formulário

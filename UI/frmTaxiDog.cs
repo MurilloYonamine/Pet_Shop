@@ -42,9 +42,24 @@ namespace UI
                 txtCodCliente.Text = dgvAgendamentos.Rows[e.RowIndex].Cells[1].Value.ToString();
                 txtCodAnimal.Text = dgvAgendamentos.Rows[e.RowIndex].Cells[2].Value.ToString();
                 dtpAgendamento.Value = Convert.ToDateTime(dgvAgendamentos.Rows[e.RowIndex].Cells[3].Value);
-                /*chkPetCare.Text = dgvAgendamentos.Rows[e.RowIndex].Cells[4].Value.ToString();
-                chkPetVet.Text = dgvAgendamentos.Rows[e.RowIndex].Cells[5].Value.ToString();
-                cboHorario.Text = dgvAgendamentos.Rows[e.RowIndex].Cells[6].Value.ToString();*/
+                if(dgvAgendamentos.Rows[e.RowIndex].Cells[4].Value.ToString().ToUpper() == "SIM")
+                {
+                    chkPetCare.Checked = true;
+                }
+                else
+                {
+                    chkPetCare.Checked = false;
+                }
+                
+                if(dgvAgendamentos.Rows[e.RowIndex].Cells[5].Value.ToString().ToUpper() == "SIM")
+                {
+                    chkPetVet.Checked = true;
+                }
+                else
+                {
+                    chkPetVet.Checked = false;
+                }
+                cboHorario.Text = dgvAgendamentos.Rows[e.RowIndex].Cells[6].Value.ToString();
 
                 btnEditar.Visible = true; //Ou enable
                 btnAgendar.Enabled = false;
@@ -174,17 +189,8 @@ namespace UI
                 }
                 MessageBox.Show(taxiDog.Mensagem, "Aviso", MessageBoxButtons.OK);
                 CarregarGridTaxi();
+                Limpar();
             }
-        }
-        private void btnCadastrarCliente_Click(object sender, EventArgs e)
-        {
-            frmAnimais Tela = new frmAnimais();
-            Tela.Show();
-        }
-        private void btnCadastrarAnimal_Click(object sender, EventArgs e)
-        {
-            frmClientes Tela = new frmClientes();
-            Tela.Show();
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -230,8 +236,6 @@ namespace UI
                 //Parar a execução do programa até esta linha
                 return;
             }
-
-
             //Armazenar as informações do formulário
             taxiDog.CodigoTaxi = Convert.ToInt32(txtCodTaxi.Text);
             taxiDog.Cpf = mskCpf.Text.Replace(".", "").Replace("-", "");
@@ -246,34 +250,29 @@ namespace UI
             taxiDog.Rga = mskRga.Text;
             if (chkPetCare.Checked)
             {
-                taxiDog.Petcare = "Sim";
-                salvarAgendamento.InserirAgendamento(taxiDog);
+                taxiDog.Petcare = "Sim";              
             }
             else
             {
-                taxiDog.Petcare = "Não";
-                salvarAgendamento.InserirAgendamento(taxiDog);
+                taxiDog.Petcare = "Não";              
             }
 
             if (chkPetVet.Checked)
             {
                 taxiDog.Petvet = "Sim";
-                salvarAgendamento.InserirAgendamento(taxiDog);
             }
             else
             {
                 taxiDog.Petvet = "Não";
-                salvarAgendamento.InserirAgendamento(taxiDog);
             }
-
-
-            //Utilização do método AtualizarDados com os dados do cliente como parâmetro
             atualizarAgendamento.AtualizarDadosTaxiDog(taxiDog);
+
             //Atualizar e configurar o DataGridView após atualização
             CarregarGridTaxi();
             ConfigurarDataGridTaxi();
             MessageBox.Show(taxiDog.Mensagem, "Aviso",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Limpar();
             
         }
         // ------------------------------------------------------------------------------- //
@@ -287,15 +286,29 @@ namespace UI
             cboAnimal.Text = "";
             mskRga.Clear();
             txtTipoAnimal.Clear();
+            dtpAgendamento.Value = DateTime.Now;
             txtCodAnimal.Clear();
-            cboAnimal.Items.Clear();
-            cboHorario.Items.Clear();
+            cboAnimal.SelectedIndex = -1;
+            cboHorario.SelectedIndex = -1;
+            chkPetCare.Checked = false;
+            chkPetVet.Checked = false;
+            txtCodTaxi.Clear();
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             Limpar();
             btnAgendar.Enabled = true;
+        }
+
+        private void txtCodTaxi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvAgendamentos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

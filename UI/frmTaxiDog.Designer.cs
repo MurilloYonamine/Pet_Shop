@@ -56,8 +56,6 @@ namespace UI
             this.lblCodigoCliente = new System.Windows.Forms.Label();
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
             this.lblNomeCliente = new System.Windows.Forms.Label();
-            this.btnCadastrarAnimal = new System.Windows.Forms.Button();
-            this.btnCadastrarCliente = new System.Windows.Forms.Button();
             this.btnAgendar = new System.Windows.Forms.Button();
             this.picFundo = new System.Windows.Forms.PictureBox();
             this.btnLimpar = new System.Windows.Forms.Button();
@@ -85,6 +83,7 @@ namespace UI
             this.txtCodTaxi.ReadOnly = true;
             this.txtCodTaxi.Size = new System.Drawing.Size(84, 26);
             this.txtCodTaxi.TabIndex = 85;
+            this.txtCodTaxi.TextChanged += new System.EventHandler(this.txtCodTaxi_TextChanged);
             // 
             // chkPetVet
             // 
@@ -112,14 +111,15 @@ namespace UI
             // 
             // btnEditar
             // 
+            this.btnEditar.BackColor = System.Drawing.Color.White;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Image = global::UI.Properties.Resources.pencil;
             this.btnEditar.Location = new System.Drawing.Point(737, 500);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(130, 91);
             this.btnEditar.TabIndex = 82;
-            this.btnEditar.Text = "EDITAR";
-            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // dgvAgendamentos
@@ -132,6 +132,7 @@ namespace UI
             this.dgvAgendamentos.Size = new System.Drawing.Size(706, 208);
             this.dgvAgendamentos.TabIndex = 81;
             this.dgvAgendamentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAgendamentos_CellClick);
+            this.dgvAgendamentos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAgendamentos_CellContentClick);
             // 
             // lblHorario
             // 
@@ -367,40 +368,17 @@ namespace UI
             this.lblNomeCliente.TabIndex = 60;
             this.lblNomeCliente.Text = "Nome Cliente:";
             // 
-            // btnCadastrarAnimal
-            // 
-            this.btnCadastrarAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarAnimal.Location = new System.Drawing.Point(426, 286);
-            this.btnCadastrarAnimal.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCadastrarAnimal.Name = "btnCadastrarAnimal";
-            this.btnCadastrarAnimal.Size = new System.Drawing.Size(130, 91);
-            this.btnCadastrarAnimal.TabIndex = 59;
-            this.btnCadastrarAnimal.Text = "CADASTRAR ANIMAL";
-            this.btnCadastrarAnimal.UseVisualStyleBackColor = true;
-            this.btnCadastrarAnimal.Click += new System.EventHandler(this.btnCadastrarAnimal_Click);
-            // 
-            // btnCadastrarCliente
-            // 
-            this.btnCadastrarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarCliente.Location = new System.Drawing.Point(599, 286);
-            this.btnCadastrarCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCadastrarCliente.Name = "btnCadastrarCliente";
-            this.btnCadastrarCliente.Size = new System.Drawing.Size(130, 91);
-            this.btnCadastrarCliente.TabIndex = 58;
-            this.btnCadastrarCliente.Text = "CADASTRAR CLIENTE";
-            this.btnCadastrarCliente.UseVisualStyleBackColor = true;
-            this.btnCadastrarCliente.Click += new System.EventHandler(this.btnCadastrarCliente_Click);
-            // 
             // btnAgendar
             // 
+            this.btnAgendar.BackColor = System.Drawing.Color.White;
             this.btnAgendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgendar.Location = new System.Drawing.Point(737, 383);
+            this.btnAgendar.Image = global::UI.Properties.Resources.save_fill;
+            this.btnAgendar.Location = new System.Drawing.Point(737, 401);
             this.btnAgendar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgendar.Name = "btnAgendar";
             this.btnAgendar.Size = new System.Drawing.Size(130, 91);
             this.btnAgendar.TabIndex = 57;
-            this.btnAgendar.Text = "AGENDAR";
-            this.btnAgendar.UseVisualStyleBackColor = true;
+            this.btnAgendar.UseVisualStyleBackColor = false;
             this.btnAgendar.Click += new System.EventHandler(this.btnAgendar_Click);
             // 
             // picFundo
@@ -418,7 +396,7 @@ namespace UI
             // 
             this.btnLimpar.BackColor = System.Drawing.Color.White;
             this.btnLimpar.Image = global::UI.Properties.Resources.eraser_fill;
-            this.btnLimpar.Location = new System.Drawing.Point(737, 286);
+            this.btnLimpar.Location = new System.Drawing.Point(737, 302);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(130, 92);
             this.btnLimpar.TabIndex = 88;
@@ -460,8 +438,6 @@ namespace UI
             this.Controls.Add(this.lblCodigoCliente);
             this.Controls.Add(this.txtNomeCliente);
             this.Controls.Add(this.lblNomeCliente);
-            this.Controls.Add(this.btnCadastrarAnimal);
-            this.Controls.Add(this.btnCadastrarCliente);
             this.Controls.Add(this.btnAgendar);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(89)))), ((int)(((byte)(113)))));
@@ -506,8 +482,6 @@ namespace UI
         private System.Windows.Forms.Label lblCodigoCliente;
         private System.Windows.Forms.TextBox txtNomeCliente;
         private System.Windows.Forms.Label lblNomeCliente;
-        private System.Windows.Forms.Button btnCadastrarAnimal;
-        private System.Windows.Forms.Button btnCadastrarCliente;
         private System.Windows.Forms.Button btnAgendar;
         private System.Windows.Forms.PictureBox picFundo;
         private System.Windows.Forms.Button btnLimpar;

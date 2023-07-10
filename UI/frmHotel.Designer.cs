@@ -53,8 +53,6 @@ namespace UI
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
             this.txtCodCliente = new System.Windows.Forms.TextBox();
             this.lblIdCliente = new System.Windows.Forms.Label();
-            this.btnCadastrarAnimal = new System.Windows.Forms.Button();
-            this.btnCadastrarCliente = new System.Windows.Forms.Button();
             this.btnHospedar = new System.Windows.Forms.Button();
             this.picBottom = new System.Windows.Forms.PictureBox();
             this.mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
@@ -86,14 +84,15 @@ namespace UI
             // 
             // btnEditar
             // 
+            this.btnEditar.BackColor = System.Drawing.Color.White;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(1298, 51);
+            this.btnEditar.Image = global::UI.Properties.Resources.pencil;
+            this.btnEditar.Location = new System.Drawing.Point(1072, 340);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(94, 42);
+            this.btnEditar.Size = new System.Drawing.Size(121, 92);
             this.btnEditar.TabIndex = 55;
-            this.btnEditar.Text = "EDITAR";
-            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // dgvListarHospedagens
@@ -322,40 +321,17 @@ namespace UI
             this.lblIdCliente.TabIndex = 33;
             this.lblIdCliente.Text = "Código do Cliente:";
             // 
-            // btnCadastrarAnimal
-            // 
-            this.btnCadastrarAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarAnimal.Location = new System.Drawing.Point(1074, 339);
-            this.btnCadastrarAnimal.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCadastrarAnimal.Name = "btnCadastrarAnimal";
-            this.btnCadastrarAnimal.Size = new System.Drawing.Size(139, 92);
-            this.btnCadastrarAnimal.TabIndex = 60;
-            this.btnCadastrarAnimal.Text = "CADASTRAR ANIMAL";
-            this.btnCadastrarAnimal.UseVisualStyleBackColor = true;
-            this.btnCadastrarAnimal.Click += new System.EventHandler(this.btnCadastrarAnimal_Click);
-            // 
-            // btnCadastrarCliente
-            // 
-            this.btnCadastrarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarCliente.Location = new System.Drawing.Point(1263, 339);
-            this.btnCadastrarCliente.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCadastrarCliente.Name = "btnCadastrarCliente";
-            this.btnCadastrarCliente.Size = new System.Drawing.Size(129, 92);
-            this.btnCadastrarCliente.TabIndex = 59;
-            this.btnCadastrarCliente.Text = "CADASTRAR CLIENTE";
-            this.btnCadastrarCliente.UseVisualStyleBackColor = true;
-            this.btnCadastrarCliente.Click += new System.EventHandler(this.btnCadastrarCliente_Click);
-            // 
             // btnHospedar
             // 
+            this.btnHospedar.BackColor = System.Drawing.Color.White;
             this.btnHospedar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHospedar.Location = new System.Drawing.Point(887, 339);
+            this.btnHospedar.Image = global::UI.Properties.Resources.save_fill;
+            this.btnHospedar.Location = new System.Drawing.Point(897, 339);
             this.btnHospedar.Margin = new System.Windows.Forms.Padding(4);
             this.btnHospedar.Name = "btnHospedar";
             this.btnHospedar.Size = new System.Drawing.Size(133, 92);
             this.btnHospedar.TabIndex = 58;
-            this.btnHospedar.Text = "HOSPEDAR";
-            this.btnHospedar.UseVisualStyleBackColor = true;
+            this.btnHospedar.UseVisualStyleBackColor = false;
             this.btnHospedar.Click += new System.EventHandler(this.btnHospedar_Click);
             // 
             // picBottom
@@ -392,8 +368,6 @@ namespace UI
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(212)))), ((int)(((byte)(209)))));
             this.ClientSize = new System.Drawing.Size(1415, 502);
             this.Controls.Add(this.btnLimpar);
-            this.Controls.Add(this.btnCadastrarAnimal);
-            this.Controls.Add(this.btnCadastrarCliente);
             this.Controls.Add(this.btnHospedar);
             this.Controls.Add(this.txtCodHotel);
             this.Controls.Add(this.lblCodigoHotel);
@@ -460,8 +434,6 @@ namespace UI
         private System.Windows.Forms.TextBox txtNomeCliente;
         private System.Windows.Forms.TextBox txtCodCliente;
         private System.Windows.Forms.Label lblIdCliente;
-        private System.Windows.Forms.Button btnCadastrarAnimal;
-        private System.Windows.Forms.Button btnCadastrarCliente;
         private System.Windows.Forms.Button btnHospedar;
         private System.Windows.Forms.PictureBox picBottom;
         private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter1;

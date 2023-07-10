@@ -17,6 +17,22 @@ namespace UI
         {
             InitializeComponent();
         }
+        private void frmDiskRacao_Load(object sender, EventArgs e)
+        {
+            RacaoDTO racao = new RacaoDTO();
+            ConsultarRacao consultarRacao = new ConsultarRacao();
+
+            cboFuncionario.DataSource = consultarRacao.ListarFuncionario(racao);
+            cboFuncionario.ValueMember = "FnCodigo";
+            cboFuncionario.DisplayMember = "FnNome";
+
+            consultarRacao.NovoCodigo(racao);
+            txtCodigo.Text = racao.Codigo.ToString();
+
+            CarregarGrid();
+
+
+        }
         // ------------------------------------------------------------------------------- //
         // Configuração da GridView
         public void CarregarGrid()
@@ -27,9 +43,11 @@ namespace UI
 
             // Atribuição dos registros ao DataGridView
             dgvEstoque.DataSource = consultarRacao.ListarEstoqueDataGridView(racao);
+            dgvDiskRacao.DataSource = consultarRacao.ListarDiskRacaoDataGridView(racao);
 
             // Procedimento para alterar os títulos e propriedades da coluna
             ConfigurarDataGridView();
+            ConfigurarDataGridViewListarDiskRacao();
 
             // Verificar se houve erro na estrutura da tabela
             if (!string.IsNullOrEmpty(racao.Mensagem))
@@ -57,12 +75,37 @@ namespace UI
                 DataGridViewContentAlignment.MiddleCenter;
             }
         }
+        public void ConfigurarDataGridViewListarDiskRacao()
+        {
+            //Verificar se o DataGridView contém linhas
+            if (dgvDiskRacao.Rows.Count != 0)
+            {
+                //Renomear o cabeçalho das colunas no DataGridView
+                dgvDiskRacao.Columns[0].HeaderText = "Código";
+                dgvDiskRacao.Columns[1].HeaderText = "Ração";
+                dgvDiskRacao.Columns[2].HeaderText = "Funcionário";
+                dgvDiskRacao.Columns[3].HeaderText = "QTD";
+                dgvDiskRacao.Columns[4].HeaderText = "Entrada";
+                dgvDiskRacao.Columns[5].HeaderText = "Saída";
+
+
+                //Configurar a largura das colunas no DataGridView
+                dgvDiskRacao.Columns[0].Width = 70;
+                dgvDiskRacao.Columns[1].Width = 180;
+                dgvDiskRacao.Columns[2].Width = 120;
+                dgvDiskRacao.Columns[3].Width = 50;
+                //Alinhar o conteúdo das colunas
+                dgvDiskRacao.Columns[0].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleCenter;
+            }
+        }
         // ------------------------------------------------------------------------------- //
         // Configurações dos botões do furmlário
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             RacaoDTO racao = new RacaoDTO();
             InserirRacao inserirRacao = new InserirRacao();
+            
 
             racao.CodigoFuncionario = Convert.ToInt32(cboFuncionario.SelectedValue);
             racao.Quantidade = Convert.ToInt32(numQuantidade.Text);
@@ -70,17 +113,37 @@ namespace UI
             racao.Saida = Convert.ToDateTime(dtpSaida.Value);
             racao.Codigo = Convert.ToInt32(txtCodigo.Text);
             racao.CodigoRacao = Convert.ToInt32(txtCodigoRacao.Text);
+
+
+
             inserirRacao.InserirDados(racao);
             CarregarGrid();
             ConfigurarDataGridView();
+            LimparCampos();
+            
+
 
             MessageBox.Show(racao.Mensagem);
+
+
         }
         private void btnLimpar_Click(object sender, EventArgs e)
         {
+            LimparCampos();
+        }
+        public void LimparCampos()
+        {
+            RacaoDTO racao = new RacaoDTO();
+            ConsultarRacao consultarRacao = new ConsultarRacao();
+
             txtCodigo.Clear();
             txtRacao.Clear();
-            cboFuncionario.Items.Clear();
+            numQuantidade.Value = 0;
+            cboFuncionario.SelectedIndex = -1;
+            dtpEntrada.Value = DateTime.Now;
+            dtpSaida.Value = DateTime.Now;
+            consultarRacao.NovoCodigo(racao);
+            txtCodigo.Text = racao.Codigo.ToString();
         }
         // ------------------------------------------------------------------------------- //
         // Métodos
@@ -94,21 +157,28 @@ namespace UI
                 txtCodigoRacao.Text = dgvEstoque.Rows[e.RowIndex].Cells[0].Value.ToString();
                 txtRacao.Text = dgvEstoque.Rows[e.RowIndex].Cells[1].Value.ToString();
                 numQuantidade.Maximum = Convert.ToInt32(dgvEstoque.Rows[e.RowIndex].Cells[2].Value);
+
+                if (numQuantidade.Maximum <= 0)
+                {
+                    btnEnviar.Enabled = false;
+                }
+                else
+                {
+                    btnEnviar.Enabled = true;
+                }
             }
         }
-        private void frmDiskRacao_Load(object sender, EventArgs e)
+
+        private void numQuantidade_ValueChanged(object sender, EventArgs e)
         {
-            RacaoDTO racao = new RacaoDTO();
-            ConsultarRacao consultarRacao = new ConsultarRacao();
+            if(Convert.ToInt32(numQuantidade.Value) > numQuantidade.Maximum)
+            {
+                numQuantidade.Value = 0;
+            }
+        }
 
-            cboFuncionario.DataSource = consultarRacao.ListarFuncionario(racao);
-            cboFuncionario.ValueMember = "FnCodigo";
-            cboFuncionario.DisplayMember = "FnNome";
-
-            consultarRacao.NovoCodigo(racao);
-            txtCodigo.Text = racao.Codigo.ToString();
-
-            CarregarGrid();
+        private void dgvDiskRacao_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
