@@ -206,5 +206,60 @@ namespace BLL
                 dados.Mensagem = "ERRO - DeletarPetMarket - DeletarDadosVenda -" + erro.ErrorCode + erro.Message;
             }
         }
+        public void DVEstoque(VendaDTO dados)
+        {
+            int qtde = new int();
+            try
+            {
+                string sql = "SELECT VenQuantidade, EsQuantidade FROM tb_venda INNER JOIN tb_estoque ON EsProCodigo = VenProCodigo WHERE VenCodigo=@codigo ";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Define o tipo de comando
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.Codigo));
+                //Realiza a leitura dos dados - Reader
+                //Ignora os títulos da tabela
+                MySqlDataReader dr = cmd.ExecuteReader();
+                //Verifica se há linhas nesta leitura de dados
+                if (dr.HasRows)
+                {
+                    //Enquanto houver dados
+                    while (dr.Read())
+                    {
+                        dados.Quantidade = dr.GetInt32(0);
+                        qtde = dr.GetInt32(1);
+                        qtde += dados.Quantidade;
+                    }//11 + 1 = 12
+                }
+                Conexao.fecharConexao();
+            }
+            catch (MySqlException erro)
+            {
+                dados.Mensagem = "ERRO - DeletarVenda - DVEstoque -" + erro.ErrorCode + erro.Message;
+            }
+            try
+            {
+                string sql = "UPDATE tb_estoque SET EsQuantidade=@qtde WHERE EsProCodigo=@codigo";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@qtde", qtde));
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.CodigoProduto));
+                int registrosAtualizados = cmd.ExecuteNonQuery();
+                //Verifica se algum registro foi atualizado
+                if (registrosAtualizados >= 1)
+                {
+                    dados.Mensagem = "Sucesso ao atualizar o registro!";
+                }
+                else
+                {
+                    dados.Mensagem = "Falha ao atualizar o registro!";
+                }
+                Conexao.fecharConexao();
+
+            }
+            catch (MySqlException erro)
+            {
+                dados.Mensagem = "ERRO - DeletarVenda - DCVenda -" + erro.ErrorCode + erro.Message;
+            }
+        }
     }
 }

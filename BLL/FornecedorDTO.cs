@@ -13,6 +13,7 @@ namespace BLL
     {
         public int Codigo { get; set; }
         public int CodigoProduto { get; set; }
+        public string Produto { get; set; }
         public string Fornecedor { get; set; }
         public DateTime Validade { get; set; }
         public int Quantidade { get; set; }

@@ -107,6 +107,7 @@ namespace UI
                 //Executar o método de exclusão
                 //deletarVenda.DVEstoque(venda);
                 deletarVenda.DeletarDadosVenda(venda);
+                deletarVenda.DVEstoque(venda);
                 CarregarGrid();
                 ConfigurarDataGridView();
                 LimparCampos();

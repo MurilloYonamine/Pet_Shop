@@ -27,7 +27,7 @@ namespace BLL
         public string Petvet { get; set; }
         public string Horario { get; set; }
     }
-    public class SalvarAgendamento
+    public class SalvarTaxiDog
     {
         public void InserirAgendamento(TaxiDogDTO dados)
         {
@@ -76,7 +76,7 @@ namespace BLL
             }
         }
     }
-    public class AtualizarAgendamento
+    public class AtualizarTaxiDog
     {
         public void AtualizarDadosTaxiDog(TaxiDogDTO taxiDog)
         {
@@ -118,7 +118,7 @@ namespace BLL
             }
         }
     }
-    public class ConsultarAgendamento
+    public class ConsultarTaxiDog
     {
         public void ConsultarCodigoTaxi(TaxiDogDTO dados)
         {

@@ -23,9 +23,9 @@ namespace UI
         private void frmTaxiDog_Load(object sender, EventArgs e)
         {
             TaxiDogDTO taxiDog = new TaxiDogDTO();
-            ConsultarAgendamento consultarAgendamento = new ConsultarAgendamento();
+            ConsultarTaxiDog consultarTaxiDog = new ConsultarTaxiDog();
 
-            consultarAgendamento.ConsultarCodigoTaxi(taxiDog);
+            consultarTaxiDog.ConsultarCodigoTaxi(taxiDog);
             txtCodTaxi.Text = taxiDog.CodigoTaxi.ToString();
             CarregarGridTaxi();
             ConfigurarDataGridTaxi();
@@ -94,9 +94,9 @@ namespace UI
         }
         public void CarregarGridTaxi()
         {
-            ConsultarAgendamento consultarAgendamento = new ConsultarAgendamento();
+            ConsultarTaxiDog consultarTaxiDog = new ConsultarTaxiDog();
             TaxiDogDTO taxiDog = new TaxiDogDTO();
-            dgvAgendamentos.DataSource = consultarAgendamento.ListarDadosTaxiDog(taxiDog);
+            dgvAgendamentos.DataSource = consultarTaxiDog.ListarDadosTaxiDog(taxiDog);
             if (!string.IsNullOrEmpty(taxiDog.Mensagem))
             {
                 MessageBox.Show(taxiDog.Mensagem);
@@ -114,16 +114,16 @@ namespace UI
                 return;
             }
             TaxiDogDTO taxiDog = new TaxiDogDTO();
-            ConsultarAgendamento consultarAgendamento = new ConsultarAgendamento();
+            ConsultarTaxiDog consultarTaxiDog = new ConsultarTaxiDog();
             taxiDog.CodigoCliente = Convert.ToInt32(txtCodCliente.Text);
-            consultarAgendamento.ConsultarDadosCliente(taxiDog);
+            consultarTaxiDog.ConsultarDadosCliente(taxiDog);
 
 
             txtNomeCliente.Text = taxiDog.Cliente;
             mskCpf.Text = taxiDog.Cpf;
             mskTelefone.Text = taxiDog.Telefone;
 
-            ArrayList listaanimais = consultarAgendamento.ListarDadosAgendamento(taxiDog);
+            ArrayList listaanimais = consultarTaxiDog.ListarDadosAgendamento(taxiDog);
             foreach (var cbo in listaanimais)
             {
                 cboAnimal.Items.Add(cbo);
@@ -132,12 +132,12 @@ namespace UI
         private void cboAnimal_SelectedIndexChanged(object sender, EventArgs e)
         {
             TaxiDogDTO taxiDog = new TaxiDogDTO();
-            ConsultarAgendamento consultarAgendamento = new ConsultarAgendamento();
+            ConsultarTaxiDog consultarTaxiDog = new ConsultarTaxiDog();
 
-            consultarAgendamento.ListarDadosAgendamento(taxiDog);
+            consultarTaxiDog.ListarDadosAgendamento(taxiDog);
             taxiDog.CodigoCliente = Convert.ToInt32(txtCodCliente.Text);
             taxiDog.NomeAnimal = cboAnimal.SelectedItem.ToString();
-            consultarAgendamento.CompararTabela(taxiDog);
+            consultarTaxiDog.CompararTabela(taxiDog);
             txtTipoAnimal.Text = taxiDog.TipoAnimal;
             mskRga.Text = taxiDog.Rga;
             txtCodAnimal.Text = taxiDog.CodigoAnimal.ToString();
@@ -147,7 +147,7 @@ namespace UI
         private void btnAgendar_Click(object sender, EventArgs e)
         {
             TaxiDogDTO taxiDog = new TaxiDogDTO();
-            SalvarAgendamento salvarAgendamento = new SalvarAgendamento();
+            SalvarTaxiDog salvarTaxiDog = new SalvarTaxiDog();
 
             if (txtNomeCliente.Text == "" || mskCpf.Text == "" || txtCodCliente.Text == "" || txtTipoAnimal.Text == "" || mskRga.Text == "" || txtCodAnimal.Text == "" ||
                 cboHorario.Text == "")
@@ -169,23 +169,23 @@ namespace UI
                 if (chkPetCare.Checked)
                 {
                     taxiDog.Petcare = "Sim";
-                    salvarAgendamento.InserirAgendamento(taxiDog);
+                    salvarTaxiDog.InserirAgendamento(taxiDog);
                 }
                 else
                 {
                     taxiDog.Petcare = "Não";
-                    salvarAgendamento.InserirAgendamento(taxiDog);
+                    salvarTaxiDog.InserirAgendamento(taxiDog);
                 }
 
                 if (chkPetVet.Checked)
                 {
                     taxiDog.Petvet = "Sim";
-                    salvarAgendamento.InserirAgendamento(taxiDog);
+                    salvarTaxiDog.InserirAgendamento(taxiDog);
                 }
                 else
                 {
                     taxiDog.Petvet = "Não";
-                    salvarAgendamento.InserirAgendamento(taxiDog);
+                    salvarTaxiDog.InserirAgendamento(taxiDog);
                 }
                 MessageBox.Show(taxiDog.Mensagem, "Aviso", MessageBoxButtons.OK);
                 CarregarGridTaxi();
@@ -195,9 +195,8 @@ namespace UI
         private void btnEditar_Click(object sender, EventArgs e)
         {
             //Instância das classes AtualizarClientes e ClientesDTO
-            AtualizarAgendamento atualizarAgendamento = new AtualizarAgendamento();
+            AtualizarTaxiDog atualizarTaxiDog = new AtualizarTaxiDog();
             TaxiDogDTO taxiDog = new TaxiDogDTO();
-            SalvarAgendamento salvarAgendamento = new SalvarAgendamento();
             //Verificar se determinados campos foram preenchidos.
             //Repita esta estrutura de IF / ELSE IF para as informações obrigatórias.
             if (txtCodCliente.Text == string.Empty)
@@ -265,7 +264,7 @@ namespace UI
             {
                 taxiDog.Petvet = "Não";
             }
-            atualizarAgendamento.AtualizarDadosTaxiDog(taxiDog);
+            atualizarTaxiDog.AtualizarDadosTaxiDog(taxiDog);
 
             //Atualizar e configurar o DataGridView após atualização
             CarregarGridTaxi();
