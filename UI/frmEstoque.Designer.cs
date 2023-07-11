@@ -1,7 +1,6 @@
-﻿
-namespace UI
+﻿namespace UI
 {
-    partial class frmCadastroProdutos
+    partial class frmEstoque
     {
         /// <summary>
         /// Required designer variable.
@@ -29,79 +28,75 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblProduto = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.picBottom = new System.Windows.Forms.PictureBox();
+            this.lblPesquisar = new System.Windows.Forms.Label();
+            this.txtPesquisar = new System.Windows.Forms.TextBox();
+            this.dgvListarEstoque = new System.Windows.Forms.DataGridView();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnCadastrar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.picBottom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListarEstoque)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblProduto
+            // lblPesquisar
             // 
-            this.lblProduto.AutoSize = true;
-            this.lblProduto.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduto.Location = new System.Drawing.Point(65, 88);
-            this.lblProduto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblProduto.Name = "lblProduto";
-            this.lblProduto.Size = new System.Drawing.Size(117, 32);
-            this.lblProduto.TabIndex = 0;
-            this.lblProduto.Text = "Produto:";
+            this.lblPesquisar.AutoSize = true;
+            this.lblPesquisar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPesquisar.ForeColor = System.Drawing.Color.White;
+            this.lblPesquisar.Location = new System.Drawing.Point(224, 167);
+            this.lblPesquisar.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblPesquisar.Name = "lblPesquisar";
+            this.lblPesquisar.Size = new System.Drawing.Size(92, 19);
+            this.lblPesquisar.TabIndex = 5;
+            this.lblPesquisar.Text = "Pesquisar:";
             // 
-            // textBox1
+            // txtPesquisar
             // 
-            this.textBox1.Location = new System.Drawing.Point(71, 122);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(213, 26);
-            this.textBox1.TabIndex = 1;
+            this.txtPesquisar.Location = new System.Drawing.Point(318, 164);
+            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.Size = new System.Drawing.Size(295, 26);
+            this.txtPesquisar.TabIndex = 4;
+            this.txtPesquisar.TextChanged += new System.EventHandler(this.txtPesquisar_TextChanged);
             // 
-            // picBottom
+            // dgvListarEstoque
             // 
-            this.picBottom.Image = global::UI.Properties.Resources.bg_blue;
-            this.picBottom.Location = new System.Drawing.Point(-13, 183);
-            this.picBottom.Name = "picBottom";
-            this.picBottom.Size = new System.Drawing.Size(377, 131);
-            this.picBottom.TabIndex = 2;
-            this.picBottom.TabStop = false;
+            this.dgvListarEstoque.AllowUserToAddRows = false;
+            this.dgvListarEstoque.AllowUserToDeleteRows = false;
+            this.dgvListarEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListarEstoque.Location = new System.Drawing.Point(228, 196);
+            this.dgvListarEstoque.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dgvListarEstoque.Name = "dgvListarEstoque";
+            this.dgvListarEstoque.ReadOnly = true;
+            this.dgvListarEstoque.Size = new System.Drawing.Size(890, 426);
+            this.dgvListarEstoque.TabIndex = 3;
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(53, 9);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitulo.Font = new System.Drawing.Font("Arial", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(507, 9);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(248, 37);
-            this.lblTitulo.TabIndex = 3;
-            this.lblTitulo.Text = "Cadastrar Produtos";
+            this.lblTitulo.Size = new System.Drawing.Size(346, 75);
+            this.lblTitulo.TabIndex = 6;
+            this.lblTitulo.Text = "ESTOQUE";
             // 
-            // btnCadastrar
+            // frmEstoque
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(168, 163);
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(116, 32);
-            this.btnCadastrar.TabIndex = 4;
-            this.btnCadastrar.Text = "Cadastrar";
-            this.btnCadastrar.UseVisualStyleBackColor = true;
-            // 
-            // frmCadastroProdutos
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(212)))), ((int)(((byte)(209)))));
-            this.ClientSize = new System.Drawing.Size(356, 282);
-            this.Controls.Add(this.btnCadastrar);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(148)))), ((int)(((byte)(114)))));
+            this.ClientSize = new System.Drawing.Size(1315, 637);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.picBottom);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.lblProduto);
-            this.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(89)))), ((int)(((byte)(113)))));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "frmCadastroProdutos";
+            this.Controls.Add(this.lblPesquisar);
+            this.Controls.Add(this.txtPesquisar);
+            this.Controls.Add(this.dgvListarEstoque);
+            this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.Black;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "frmEstoque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro de Produtos";
-            ((System.ComponentModel.ISupportInitialize)(this.picBottom)).EndInit();
+            this.Text = "Estoque";
+            this.Load += new System.EventHandler(this.frmEstoque_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListarEstoque)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,10 +104,9 @@ namespace UI
 
         #endregion
 
-        private System.Windows.Forms.Label lblProduto;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.PictureBox picBottom;
+        private System.Windows.Forms.Label lblPesquisar;
+        private System.Windows.Forms.TextBox txtPesquisar;
+        private System.Windows.Forms.DataGridView dgvListarEstoque;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Button btnCadastrar;
     }
 }

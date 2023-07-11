@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 // Acesso à string de conexão.
 using DAL.Properties;
-// Acessp aos comandos para o Mysql.
+// Acesso aos comandos para o Mysql.
 using MySql.Data.MySqlClient;
 
 namespace DAL
