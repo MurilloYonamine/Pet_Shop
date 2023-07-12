@@ -62,7 +62,7 @@ namespace BLL
         {
             try
             {
-                MySqlCommand cmd = new MySqlCommand("SP_PmInserirSomar", Conexao.obterConexao());
+                MySqlCommand cmd = new MySqlCommand("SP_PmInserirSubtrair", Conexao.obterConexao());
 
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -196,5 +196,6 @@ namespace BLL
             Conexao.fecharConexao();
 
         }
+
     }
 }

@@ -13,19 +13,10 @@ namespace BLL
     {
         public int Codigo { get; set; }
         public int CodigoPet { get; set; }
-        public string NomePet { get; set; }
         public int CodigoCliente { get; set; }
         public string Cliente { get; set; }
         public int Funcionario { get; set; }
-        public string Raca { get; set; }
-        public string Cor { get; set; }
-        public string Tipo { get; set; }
-        public decimal Peso { get; set; }
         public DateTime Data { get; set; }
-        public string Pedigree { get; set; }
-        public string Rga { get; set; }
-        public string Sexo { get; set; }
-        public string Observacao { get; set; }
         public string Mensagem { get; set; }
         public string Pesquisa { get; set; }
     }

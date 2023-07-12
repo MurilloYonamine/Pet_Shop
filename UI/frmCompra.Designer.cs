@@ -89,12 +89,13 @@ namespace UI
             this.dgvListarProduto.AllowUserToAddRows = false;
             this.dgvListarProduto.AllowUserToDeleteRows = false;
             this.dgvListarProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListarProduto.Location = new System.Drawing.Point(671, 159);
+            this.dgvListarProduto.Location = new System.Drawing.Point(671, 164);
             this.dgvListarProduto.Margin = new System.Windows.Forms.Padding(4);
             this.dgvListarProduto.Name = "dgvListarProduto";
             this.dgvListarProduto.ReadOnly = true;
-            this.dgvListarProduto.Size = new System.Drawing.Size(595, 284);
+            this.dgvListarProduto.Size = new System.Drawing.Size(595, 279);
             this.dgvListarProduto.TabIndex = 40;
+            this.dgvListarProduto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarProduto_CellClick);
             // 
             // dtpValidade
             // 
@@ -281,6 +282,7 @@ namespace UI
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCompra";
             this.Text = "frmCompra";
+            this.Load += new System.EventHandler(this.frmCompra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarProduto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidade)).EndInit();
             this.ResumeLayout(false);

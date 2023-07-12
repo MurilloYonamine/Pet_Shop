@@ -44,6 +44,65 @@ namespace BLL
                 dados.Mensagem = "ERRO - SalvarEstoque - InserirDadosEstoque -" + erro.ErrorCode + erro.Message;
             }
         }
+        public void CEstoque(EstoqueDTO dados)
+        {
+            int qtde = new int();
+
+            try
+            {
+                string sql = "SELECT EsQuantidade FROM tb_estoque WHERE EsProCodigo=@codigo";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Define o tipo de comando
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.Codigo));
+                //Realiza a leitura dos dados - Reader
+                //Ignora os títulos da tabela
+                MySqlDataReader dr = cmd.ExecuteReader();
+                //Verifica se há linhas nesta leitura de dados
+                if (dr.HasRows)
+                {
+                    //Enquanto houver dados
+                    while (dr.Read())
+                    {
+                        qtde = dr.GetInt32(0);
+                        dados.Quantidade += qtde;
+                    }//11 + 1 = 12
+                }
+                Conexao.fecharConexao();
+
+            }
+            catch (MySqlException erro)
+            {
+
+                dados.Mensagem = "ERRO - SalvarEstoque - InserirDados -" + erro.ErrorCode + erro.Message;
+            }
+            try
+            {
+                string sql = "UPDATE tb_estoque SET EsQuantidade=@qtde WHERE EsProCodigo=@codigo";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@qtde", dados.Quantidade));
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.Codigo));
+                int registrosAtualizados = cmd.ExecuteNonQuery();
+                //Verifica se algum registro foi atualizado
+                if (registrosAtualizados >= 1)
+                {
+                    dados.Mensagem = "Sucesso ao atualizar o registro!";
+
+                }
+                else
+                {
+                    dados.Mensagem = "Falha ao atualizar o registro!";
+
+                }
+                Conexao.fecharConexao();
+
+            }
+            catch (MySqlException erro)
+            {
+                dados.Mensagem = "ERRO - SalvarEstoque - CEstoque -" + erro.ErrorCode + erro.Message;
+            }
+        }
     }
     public class ConsultarEstoque
     {
@@ -117,6 +176,84 @@ namespace BLL
     }
     public class DeletarEstoque
     {
+        public void DeletarDados(EstoqueDTO dados)
+        {
+            //Comando Delete para o BD
+            string sql = "DELETE FROM tb_fornecedor WHERE FoCodigo=@codigo";
+            //Variável que receberá o resultado da Conexão e Delete
+            MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+            //Declarar o tipo de comando: Text ou Procedure
+            cmd.CommandType = CommandType.Text;
+            //Parâmetros que serão substituídos
+            cmd.Parameters.Add(new MySqlParameter("@codigo", dados.Codigo));
+            //Execução do comando
+            int registrosDeletados = cmd.ExecuteNonQuery();
+            //Verificação da exclusão do registros
+            if (registrosDeletados >= 1)
+            {
+                dados.Mensagem = "Registro deletado com Sucesso!";
+            }
+            else
+            {
+                dados.Mensagem = "Falha ao deletar o registro!";
+            }
+            Conexao.fecharConexao();
 
+        }
+        public void CancelarFornecedor(EstoqueDTO dados)
+        {
+            int qtde = new int();
+            try
+            {
+                string sql = "SELECT FoQuantidade, EsQuantidade FROM tb_fornecedor INNER JOIN tb_estoque ON EsProCodigo = FoProCodigo WHERE FoCodigo=@codigo ";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                //Define o tipo de comando
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.Codigo));
+                //Realiza a leitura dos dados - Reader
+                //Ignora os títulos da tabela
+                MySqlDataReader dr = cmd.ExecuteReader();
+                //Verifica se há linhas nesta leitura de dados
+                if (dr.HasRows)
+                {
+                    //Enquanto houver dados
+                    while (dr.Read())
+                    {
+                        dados.Quantidade = dr.GetInt32(0);
+                        qtde = dr.GetInt32(1);
+                        qtde -= dados.Quantidade;
+                    }//11 + 1 = 12
+                }
+                Conexao.fecharConexao();
+            }
+            catch (MySqlException erro)
+            {
+                dados.Mensagem = "ERRO - DeletarEstoque - DCEstoque -" + erro.ErrorCode + erro.Message;
+            }
+            try
+            {
+                string sql = "UPDATE tb_estoque SET EsQuantidade=@qtde WHERE EsProCodigo=@codigo";
+                MySqlCommand cmd = new MySqlCommand(sql, Conexao.obterConexao());
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new MySqlParameter("@qtde", qtde));
+                cmd.Parameters.Add(new MySqlParameter("@codigo", dados.NomeProduto));
+                int registrosAtualizados = cmd.ExecuteNonQuery();
+                //Verifica se algum registro foi atualizado
+                if (registrosAtualizados >= 1)
+                {
+                    dados.Mensagem = "Sucesso ao atualizar o registro!";
+                }
+                else
+                {
+                    dados.Mensagem = "Falha ao atualizar o registro!";
+                }
+                Conexao.fecharConexao();
+
+            }
+            catch (MySqlException erro)
+            {
+                dados.Mensagem = "ERRO - DeletarEstoque - DCEstoque -" + erro.ErrorCode + erro.Message;
+            }
+        }
     }
 }
