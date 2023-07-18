@@ -1,3 +1,45 @@
-Projeto de Pet Shop utilizando C# com SQL
+# Pet Shop - Sistema de Gerenciamento de Pet Shop
 
-O projeto de Pet Shop baseado em C# com SQL visa criar um sistema eficiente e abrangente para gerenciar as operações diárias de um Pet Shop. Esse projeto incorpora diferentes módulos, como Funcionários, Pet Market, Pet Care, Pet Vet e Pet Serve, para oferecer uma ampla gama de serviços aos clientes e garantir o bem-estar de seus animais de estimação.
+## Descrição do Projeto
+
+Este é o repositório do projeto do Pet Shop, um sistema de gerenciamento de Pet Shop desenvolvido em equipe utilizando a linguagem C# e banco de dados SQL. O projeto segue o padrão de modularização com as camadas BLL (Business Logic Layer), DAL (Data Access Layer), UI (User Interface), e DTOS (Data Transfer Objects).
+
+O objetivo principal deste projeto é fornecer uma solução para a administração de um Pet Shop, possibilitando a gestão eficiente de adoções, animais, serviços de banho e tosa, clientes e outras funcionalidades relacionadas ao negócio de cuidados de animais.
+
+## Funcionalidades
+
+O sistema oferecerá as seguintes funcionalidades principais:
+
+1. Formulário de Adoção:
+   - Cadastro de animais disponíveis para adoção.
+   - Registro de informações sobre os possíveis adotantes.
+   - Acompanhamento do processo de adoção.
+
+2. Formulário de Animais:
+   - Cadastro e gerenciamento de animais sob os cuidados do Pet Shop.
+   - Informações detalhadas de cada animal, como nome, espécie, idade, saúde, etc.
+
+3. Formulário de Banho e Tosa:
+   - Agendamento e gerenciamento de serviços de banho e tosa para os animais.
+   - Rastreamento de histórico de serviços realizados.
+
+4. Formulário de Clientes:
+   - Cadastro e gerenciamento de informações dos clientes do Pet Shop.
+   - Histórico de adoções e serviços utilizados pelos clientes.
+
+5. Outras funcionalidades (se houver outras):
+
+...
+
+## Requisitos do Sistema
+
+Para executar o projeto localmente em sua máquina, você precisará ter instalado os seguintes componentes:
+
+1. [Visual Studio](https://visualstudio.microsoft.com/) - IDE utilizada para desenvolver o projeto.
+2. [SQL Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads) - Banco de Dados SQL utilizado para armazenar os dados do sistema.
+3. Outras dependências (se houver outras).
+
+## Instalação
+
+1. Faça o clone deste repositório para sua máquina local:
+
